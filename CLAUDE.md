@@ -108,9 +108,17 @@ Pages rejects any single file over 25 MB.
 
 ## Deploy
 
-Not deployed yet. Next stage is the **cloudflare-pages-deploy** skill: GitHub repo, Cloudflare
-Pages project, custom domain, HTTPS. `CNAME` and `.nojekyll` are already in place.
-`_source/` and `brand/` should be excluded from the deployed output.
+**GitHub repo: https://github.com/nelsoninno/tacoshermanos** (branch `main`), pushed 31 July 2026.
+
+Not yet on Cloudflare. Next stage is the **cloudflare-pages-deploy** skill, step 2 onward:
+create the Pages project connected to this repo (framework preset None, no build command,
+output directory `/`), then connect tacoshermanos.com. After that every `git push` auto-deploys.
+`CNAME` and `.nojekyll` are already in place and are harmless on Cloudflare.
+
+`_source/` (the build scripts) and `brand/` ARE committed on purpose: the HTML is generated,
+so without them nobody can rebuild the site. They are small and contain no secrets.
+`_source/photos-original/` is gitignored, it is 19 MB of raw extractions recoverable from the
+client's own PDFs.
 
 ## Release gate
 
