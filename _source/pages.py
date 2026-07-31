@@ -16,19 +16,23 @@ def L(lang, es, en):  return es if lang == "es" else en
 def home(lang):
     es = lang == "es"
     b = lambda k: href(lang, k)
-    out = [hero(lang, f"hero-tacos-hermanos-{DOMAIN}.webp",
-        L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"),
-        L(lang,"El Salvador · Desde 2021","El Salvador · Since 2021"),
-        L(lang,'Tacos que se comparten en familia, en seis casas de <span class="hl">El Salvador</span>',
-                'Tacos worth sharing with family, in six houses across <span class="hl">El Salvador</span>'),
-        L(lang,"Desayunos, tacos, burros y tortas. Un producto espectacular, un servicio memorable y el mejor valor por su dinero.",
-                "Breakfast, tacos, burritos and tortas. A spectacular product, memorable service and the best value for your money."),
-        [f'<a class="btn btn--primary" href="{b("menu")}">{L(lang,"Ver el menú","See the menu")}</a>',
-         f'<a class="btn btn--ghost" href="{b("info")}">{L(lang,"Horarios y ubicaciones","Hours and locations")}</a>'])]
-
-    out.append(marquee(["Lo bonito se comparte", "¡Ya somos hermanos!",
-                        L(lang,"Aquí es donde la vida se celebra","This is where life gets celebrated"),
-                        "Est. 2021"]))
+    out = [f"""<section class="hero hero--concepto">
+  <div class="hero__media">{img(lang,'assets/images/hero/hero-tacos-hermanos-'+DOMAIN+'.webp',
+       L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"), priority=True)}</div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">{L(lang,"El Salvador · Desde 2021","El Salvador · Since 2021")}</span>
+    {concepto(lang)}
+    <h1 class="hero__h1">{L(lang,
+      "Tacos, desayunos y celebraciones en familia, en seis casas de El Salvador.",
+      "Tacos, breakfast and family celebrations, in six houses across El Salvador.")}</h1>
+    <div class="hero__quick">
+      <a class="is-primary" href="{b('menu')}">{L(lang,"Ver el menú","See the menu")}</a>
+      <a href="{b('info')}#horarios">{L(lang,"Horarios","Hours")}</a>
+      <a href="{b('info')}">{L(lang,"Sucursales","Locations")}</a>
+      <a href="{b('regala')}">{L(lang,"Enviar tacos","Send tacos")}</a>
+    </div>
+  </div>
+</section>"""]
 
     # --- la esencia
     out.append(f"""<section class="section" aria-labelledby="esencia">
@@ -37,8 +41,8 @@ def home(lang):
       <span class="eyebrow">{L(lang,"La esencia","What we are about")}</span>
       <h2 id="esencia">{L(lang,"Creemos que un saludo puede cambiar una vida","We believe a greeting can change a life")}</h2>
       <p class="lead mt-2">{L(lang,
-        "Tacos Hermanos nació como el sueño de hacer un restaurante diferente, un restaurante que cambie vidas. Creemos en el efecto mariposa: que el movimiento de una mariposa puede afectar el clima al otro lado del mundo, y que las reacciones en cadena son reales.",
-        "Tacos Hermanos was born as the dream of building a different kind of restaurant, one that changes lives. We believe in the butterfly effect: that the movement of a butterfly can change the weather on the other side of the world, and that chain reactions are real.")}</p>
+        "Tacos Hermanos nació como el sueño de hacer un restaurante diferente, un restaurante que cambie vidas. Somos uno, somos la suma de nuestros sueños y de nuestras luchas. El viaje de cada uno se integra al viaje del otro.",
+        "Tacos Hermanos was born as the dream of building a different kind of restaurant, one that changes lives. We are one, we are the sum of our dreams and of our struggles. Each person's journey folds into everyone else's.")}</p>
       <p class="mt-2">{L(lang,
         "Son pequeñas cosas que ajustan ángulos chiquitos, pero que a largo plazo tienen efectos bien grandes. Atendemos a miles de personas al día. Hacerlo con amabilidad, con gentileza y con cariño, junto a la mejor comida que podamos servir, es nuestra manera de hacer del mundo un mejor lugar.",
         "They are small things that shift tiny angles, and over the long run those tiny angles have enormous effects. We serve thousands of people every day. Doing it with kindness, with gentleness and with care, alongside the best food we can put on a plate, is our way of making the world a better place.")}</p>
@@ -48,7 +52,7 @@ def home(lang):
         <p>{L(lang,
           "Tenemos literalmente una regla de oro en Tacos Hermanos: que cada persona que entra por nuestras puertas viva una experiencia extraordinaria, una experiencia que cambia vidas.",
           "We literally have a golden rule at Tacos Hermanos: every single person who walks through our doors lives an extraordinary experience, an experience that changes lives.")}</p>
-        <cite>{L(lang,"Alfonso Díaz-Bazán, cofundador","Alfonso Díaz-Bazán, co-founder")}</cite>
+        <cite>Tacos Hermanos</cite>
       </blockquote>
       <div class="mt-3">{img(lang, f"assets/images/gallery/servicio-memorable-tacos-hermanos-{DOMAIN}.webp",
         L(lang,"Un colaborador de Tacos Hermanos sirviendo un plato","A Tacos Hermanos team member serving a plate"), cls_="")}</div>
@@ -56,23 +60,24 @@ def home(lang):
   </div>
 </section>""")
 
-    # --- pilares
-    P = [(L(lang,"Un producto espectacular","A spectacular product"),
-          L(lang,"Nuestro menú está en constante evolución, para sorprender a las familias salvadoreñas.",
-                 "Our menu is always evolving, to keep surprising Salvadoran families.")),
-         (L(lang,"Un servicio memorable","Memorable service"),
-          L(lang,"La regla de oro no es un eslogan. Es lo que medimos todos los días en cada una de las casas.",
-                 "The golden rule is not a slogan. It is what we measure every single day in every house.")),
-         (L(lang,"El mejor valor por su dinero","The best value for money"),
-          L(lang,"Que una familia entera coma bien, se sienta vista y salga diciendo que valió cada centavo.",
-                 "A whole family eats well, feels seen, and leaves saying it was worth every cent."))]
-    cards = "".join(f'<div class="pillar reveal" data-delay="{i}"><h3>{t}</h3><p>{d}</p></div>'
-                    for i,(t,d) in enumerate(P))
+    # --- pilares (positive framing, Erika's own wording, 31 July call)
+    P = [("Un producto espectacular","A spectacular product",
+          "Nuestro menú está en constante evolución.","Our menu is always evolving.","taco"),
+         ("Un servicio memorable","Memorable service",
+          "Cada persona que entra vive una experiencia extraordinaria.",
+          "Everyone who walks in lives an extraordinary experience.","arco"),
+         ("El mejor valor por su dinero","The best value for your money",
+          "Que toda la familia coma bien y salga feliz.",
+          "The whole family eats well and leaves happy.","tostada")]
+    cards = "".join(
+      f'<div class="pillar reveal" data-delay="{i}">{icono(lang, ic)}'
+      f'<h3 class="mt-1">{L(lang,t_es,t_en)}</h3><p>{L(lang,d_es,d_en)}</p></div>'
+      for i,(t_es,t_en,d_es,d_en,ic) in enumerate(P))
     out.append(f"""<section class="section section--tight">
   <div class="wrap">
     <div class="center reveal mb-3">
       <span class="eyebrow">{L(lang,"Nuestro modelo","Our model")}</span>
-      <h2>{L(lang,"Tres cosas que no negociamos","Three things we do not negotiate")}</h2>
+      <h2>{L(lang,"Lo que siempre vas a encontrar aquí","What you will always find here")}</h2>
     </div>
     <div class="pillars">{cards}</div>
   </div>
@@ -115,7 +120,7 @@ def home(lang):
     </div>
     <div class="timeline">{rows}</div>
     <p class="price-note">{L(lang,
-      "Horarios exactos por sucursal en la página de Info.","Exact hours per location are on the Info page.")}
+      "Cada sucursal tiene su propio horario.","Each location has its own hours.")}
       <a href="{b('info')}">{L(lang,"Ver horarios","See hours")}</a></p>
   </div>
 </section>""")
@@ -154,7 +159,7 @@ FAQ = {
   ("¿Tacos Hermanos tiene delivery?",
    "No hacemos delivery propio. La razón es simple: queremos estar seguros de que la comida llega a la mesa con nuestro estándar. Cuando un plato pasa a otras manos, se guarda en una caja y viaja por la calle, no podemos garantizar que llegue como salió de la cocina. Preferimos que la primera vez que lo pruebes sea como debe ser."),
   ("¿Dónde están ubicados y a qué hora abren?",
-   "Tenemos seis casas: San Benito, La Gran Vía, Paseo Venecia en Soyapango, Las Ramblas en Santa Ana, San Miguel y Plaza Mundo en Usulután. Los horarios exactos de cada sucursal están en la página de Info."),
+   "Tenemos seis casas: San Benito, La Gran Vía, Paseo Venecia en Soyapango, Las Ramblas en Santa Ana, San Miguel y Plaza Mundo en Usulután. Los horarios exactos de cada sucursal están en la página de Sucursales."),
   ("¿Tacos Hermanos sirve desayunos?",
    "Sí. El menú de desayunos es lo más nuevo de la casa e incluye Súper Típico Hermano, Huevos Rotos, Burro Asado y Tostadas a la Francesa, entre otros. Todos los desayunos incluyen café con refill, un pan artesanal y salsa roja tatemada o salsa verde."),
   ("¿Cuánto cuesta comer en Tacos Hermanos?",
@@ -168,7 +173,7 @@ FAQ = {
   ("Does Tacos Hermanos deliver?",
    "We do not run our own delivery. The reason is simple: we want to be certain the food reaches the table at our standard. Once a plate passes to other hands, sits in a box and travels down the road, we cannot guarantee it arrives the way it left the kitchen. We would rather your first taste be the way it is meant to be."),
   ("Where are you located and what are your hours?",
-   "We have six houses: San Benito, La Gran Vía, Paseo Venecia in Soyapango, Las Ramblas in Santa Ana, San Miguel, and Plaza Mundo in Usulután. Exact hours for each location are on the Info page."),
+   "We have six houses: San Benito, La Gran Vía, Paseo Venecia in Soyapango, Las Ramblas in Santa Ana, San Miguel, and Plaza Mundo in Usulután. Exact hours for each location are on the Locations page."),
   ("Does Tacos Hermanos serve breakfast?",
    "Yes. The breakfast menu is the newest thing in the house and includes Súper Típico Hermano, Huevos Rotos, Burro Asado and Tostadas a la Francesa, among others. Every breakfast comes with coffee and free refills, an artisan bread roll, and either roasted red salsa or salsa verde."),
   ("How much does it cost to eat at Tacos Hermanos?",
@@ -203,10 +208,39 @@ def historia(lang):
 
     <blockquote class="quote mt-4 reveal">
       <p>{L(lang,
-        "Un saludo bien puesto en el momento correcto puede cambiar una vida. Un abrazo, un oído empático, un buen gesto, puede cambiar el rumbo de una vida.",
-        "A greeting placed well at the right moment can change a life. A hug, an empathetic ear, a kind gesture, can change the course of a life.")}</p>
-      <cite>{L(lang,"Alfonso Díaz-Bazán, cofundador","Alfonso Díaz-Bazán, co-founder")}</cite>
+        "Somos tres, somos hermanos. Junto a ti, somos invencibles. Y lo mejor de todo es que, sin habernos conocido, ya somos hermanos.",
+        "There are three of us, and we are brothers. Together with you, we are unstoppable. And the best part is that, without ever having met, we are already brothers.")}</p>
+      <cite>Tacos Hermanos</cite>
     </blockquote>
+  </div>
+</section>""")
+
+    # --- cultura, verbatim from the client's own Cultura artwork
+    out.append(f"""<section class="section band-cream">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">{L(lang,"Cultura","Culture")}</span>
+    <h2 class="reveal">{L(lang,"Somos uno","We are one")}</h2>
+    <p class="lead mt-2 reveal">{L(lang,
+      "Somos uno, somos la suma de nuestros sueños, de nuestras luchas. Somos hermanos. El viaje de cada uno se integra al viaje del otro, coincidimos en la misma cancha, en la misma tierra. La cuidamos entre todos.",
+      "We are one, we are the sum of our dreams and of our struggles. We are brothers. Each person's journey folds into everyone else's, we meet on the same field, on the same soil. We look after it together.")}</p>
+    <p class="mt-2 reveal">{L(lang,
+      "Nuestras acciones siempre afectan a un hermano. Somos conscientes de esta realidad y la honramos con agradecimiento, responsabilidad y alegría. Nuestra victoria personal es la victoria de la empresa. Cuando triunfa uno, triunfamos todos. Juntos, somos invencibles.",
+      "What we do always touches a brother. We are aware of that, and we honour it with gratitude, responsibility and joy. A personal victory is a victory for the whole company. When one of us wins, all of us win. Together, we are unstoppable.")}</p>
+  </div>
+</section>""")
+
+    # --- valores, the five words from their brand book
+    VAL = [("Honestidad","Honesty"),("Hermandad","Brotherhood"),("Valentía","Courage"),
+           ("Excelencia","Excellence"),("Alegría","Joy")]
+    vcards = "".join(f'<div class="card reveal" data-delay="{i%3}"><h3>{L(lang,a,b)}</h3></div>'
+                     for i,(a,b) in enumerate(VAL))
+    out.append(f"""<section class="section">
+  <div class="wrap">
+    <div class="center reveal mb-3">
+      <span class="eyebrow">{L(lang,"Valores","Values")}</span>
+      <h2>{L(lang,"Cinco palabras que se sostienen solas","Five words that stand on their own")}</h2>
+    </div>
+    <div class="grid grid--3">{vcards}</div>
   </div>
 </section>""")
 
@@ -218,8 +252,8 @@ def historia(lang):
       "La primera casa abrió el 21 de mayo de 2021 en San Benito, San Salvador. En cinco años se convirtieron en seis casas en todo el país.",
       "The first house opened on May 21, 2021 in San Benito, San Salvador. Within five years it became six houses across the country.")}</p>
     <p class="mt-3 reveal">{pend(L(lang,
-      "PENDIENTE DEL CLIENTE: cómo fueron las primeras semanas, los retos del arranque, y qué NO ha cambiado desde el día uno. Alfonso y Erika quedaron en escribir este párrafo con sus propias palabras.",
-      "PENDING FROM CLIENT: what the first weeks were like, the early challenges, and what has NOT changed since day one. Alfonso and Erika agreed to write this paragraph in their own words."), block=True)}</p>
+      "PENDIENTE DEL CLIENTE: cómo fueron las primeras semanas, los retos del arranque, y qué NO ha cambiado desde el día uno.",
+      "PENDING FROM CLIENT: what the first weeks were like, the early challenges, and what has NOT changed since day one."), block=True)}</p>
     <div class="mt-4 reveal">{img(lang, f"assets/images/gallery/equipo-hermanos-tacos-hermanos-{DOMAIN}.webp",
       L(lang,"El equipo de Tacos Hermanos reunido bajo el rótulo","The Tacos Hermanos team gathered under the sign"))}</div>
   </div>
@@ -248,7 +282,7 @@ def historia(lang):
 </section>""")
     out.append(cta_band(L(lang,"Vení a probarlo","Come and taste it"),
       L(lang,"Seis casas en El Salvador, abiertas todos los días.","Six houses across El Salvador, open every day."),
-      [f'<a class="btn btn--sun" href="{href(lang,"info")}">{L(lang,"Ver ubicaciones","See locations")}</a>']))
+      [f'<a class="btn btn--sun" href="{href(lang,"info")}">{L(lang,"Ver sucursales","See locations")}</a>']))
     return "\n".join(out)
 
 # =========================================================================
@@ -402,31 +436,30 @@ def almuerzo(lang):
 # INFO
 # =========================================================================
 def info(lang):
-    cards = "".join(
-      f"""<div class="card loc reveal" data-delay="{i%3}">
-        <h3>{c[0]}</h3>
-        <span class="loc__meta">{c[4]}</span>
-        <span class="loc__meta">{pend(L(lang,"Horario por confirmar","Hours to confirm"))}</span>
-        <span class="loc__since">{L(lang,"Desde el "+c[1], "Since "+c[2])}</span>
-      </div>""" for i,c in enumerate(CASAS))
+    """The old Info page, rebuilt as Sucursales: a card per branch with its own
+    photo, its own opening video and its own hours. Erika asked for exactly this."""
     out = [hero(lang, f"hero-info-tacos-hermanos-{DOMAIN}.webp",
         L(lang,"Fachada de Tacos Hermanos San Benito","The Tacos Hermanos San Benito storefront"),
-        L(lang,"Info","Info"),
-        L(lang,"Horarios, ubicaciones y todo lo que preguntan","Hours, locations and everything people ask"),
-        L(lang,"Seis casas en El Salvador. Sin reservaciones y sin delivery, y aquí explicamos por qué.",
-                "Six houses across El Salvador. No reservations and no delivery, and here is why."),
-        [f'<a class="btn btn--primary" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>'])]
+        L(lang,"Sucursales","Locations"),
+        L(lang,"Seis casas en El Salvador","Six houses across El Salvador"),
+        L(lang,"Cada una con su propio horario, su propia historia y el día que abrió sus puertas.",
+                "Each with its own hours, its own story and the day it opened its doors."),
+        [f'<a class="btn btn--primary" href="#horarios">{L(lang,"Ver horarios","See hours")}</a>',
+         f'<a class="btn btn--ghost" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>'])]
 
-    out.append(f"""<section class="section">
+    out.append(f"""<section class="section" id="horarios" aria-labelledby="sucursales-title">
   <div class="wrap">
     <div class="reveal mb-3">
       <span class="eyebrow">{L(lang,"Nuestras casas","Our houses")}</span>
-      <h2>{L(lang,"Dónde encontrarnos","Where to find us")}</h2>
+      <h2 id="sucursales-title">{L(lang,"Dónde encontrarnos y a qué hora","Where to find us, and when")}</h2>
+      <p class="lead mt-2">{L(lang,
+        "Tocá el play en cualquiera de las casas para ver cómo fue el día que abrimos.",
+        "Hit play on any of the houses to see the day we opened it.")}</p>
     </div>
-    <div class="grid grid--3">{cards}</div>
+    {sucursal_cards(lang)}
     <p class="price-note mt-3">{pend(L(lang,
-      "PENDIENTE DEL CLIENTE: direcciones exactas o links de Google Maps, horarios por sucursal, teléfonos de contacto y el correo para business inquiries.",
-      "PENDING FROM CLIENT: exact addresses or Google Maps links, hours per location, contact phone numbers and the business inquiries email."), block=True)}</p>
+      "PENDIENTE DEL CLIENTE: direcciones exactas o links de Google Maps, teléfonos por sucursal, el correo para business inquiries, y los videos de San Benito y Paseo Venecia. Los horarios de La Gran Vía cambian cuando arranquen los desayunos.",
+      "PENDING FROM CLIENT: exact addresses or Google Maps links, phone numbers per location, the business inquiries email, and the videos for San Benito and Paseo Venecia. La Gran Vía hours change once breakfast launches."), block=True)}</p>
   </div>
 </section>""")
     out.append(faq_block(L(lang,"Preguntas frecuentes","Frequently asked questions"), FAQ[lang]))
@@ -440,28 +473,92 @@ def info(lang):
 # FUNDACIÓN
 # =========================================================================
 def fundacion(lang):
+    """Somos Hermanos. Content taken verbatim from the client's own in-store
+    stand artwork. The section carries the foundation's blue, not restaurant green."""
+    es = lang == "es"
     out = [hero(lang, f"hero-fundacion-tacos-hermanos-{DOMAIN}.webp",
         L(lang,"El equipo de Tacos Hermanos reunido","The Tacos Hermanos team together"),
-        L(lang,"La Fundación","The Foundation"),
-        L(lang,"El efecto mariposa, fuera del restaurante","The butterfly effect, beyond the restaurant"),
-        L(lang,"La misma filosofía que aplicamos en cada mesa, llevada un paso más allá.",
-                "The same philosophy we apply at every table, taken one step further."),
-        [])]
-    out.append(f"""<section class="section">
-  <div class="wrap narrow">
-    <p class="lead reveal">{L(lang,
-      "Tacos Hermanos tiene una fundación. Nació de la misma idea que el restaurante: que las pequeñas acciones, repetidas todos los días, cambian el rumbo de una vida.",
-      "Tacos Hermanos has a foundation. It was born from the same idea as the restaurant: that small actions, repeated every day, change the course of a life.")}</p>
-    <div class="mt-3 reveal">{pend(L(lang,
-      "PENDIENTE DEL CLIENTE: el nombre oficial de la fundación, qué hace exactamente, a quiénes ha ayudado y en qué números, y cómo una persona o una empresa puede colaborar o donar. Con dos o tres párrafos y un par de datos concretos esta página queda lista.",
-      "PENDING FROM CLIENT: the foundation's official name, exactly what it does, who it has helped and in what numbers, and how a person or a company can support or donate. Two or three paragraphs plus a couple of concrete figures and this page is ready."), block=True)}</div>
-    <div class="mt-4 reveal">{img(lang, f"assets/images/gallery/equipo-completo-tacos-hermanos-{DOMAIN}.webp",
+        L(lang,"Somos Hermanos · Est. 2021","Somos Hermanos · Est. 2021"),
+        L(lang,"El mundo es un mejor lugar si nos tratamos como hermanos",
+                "The world is a better place when we treat each other like family"),
+        L(lang,"Nuestra fundación nace hace cinco años con una firme creencia.",
+                "Our foundation was born five years ago out of one firm belief."),
+        [f'<a class="btn btn--primary" href="#como-ayudar">{L(lang,"Cómo ser parte","How to take part")}</a>'])]
+
+    out.append(f"""<section class="section band-somos">
+  <div class="wrap narrow center">
+    <blockquote class="versiculo reveal">
+      {L(lang,"&laquo;El que ama a Dios, ame también a su hermano.&raquo;",
+              "&laquo;Whoever loves God must also love their brother.&raquo;")}
+      <cite>1 Juan 4:21</cite>
+    </blockquote>
+    <div class="cifras">
+      <div class="reveal">
+        <span class="cifra__n">+300</span>
+        <span class="cifra__t">{L(lang,"canastas donadas todos los domingos del año por Tacos Hermanos",
+                                        "aid baskets donated every Sunday of the year by Tacos Hermanos")}</span>
+      </div>
+      <div class="reveal" data-delay="1">
+        <span class="cifra__n">+5</span>
+        <span class="cifra__t">{L(lang,"años apoyando a niños que lo necesitan en Sonsonate",
+                                        "years supporting children who need it in Sonsonate")}</span>
+      </div>
+    </div>
+  </div>
+</section>""")
+
+    # the butterfly effect lives here now, where it belongs
+    out.append(f"""<section class="section somos">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">{L(lang,"Por qué","Why")}</span>
+      <h2>{L(lang,"El efecto mariposa","The butterfly effect")}</h2>
+      <p class="lead mt-2">{L(lang,
+        "Creemos que el movimiento de una mariposa puede afectar el clima al otro lado del mundo. Creemos en las reacciones en cadena: son pequeñas cosas que ajustan ángulos chiquitos, pero que a largo plazo tienen efectos bien grandes.",
+        "We believe the movement of a butterfly can change the weather on the other side of the world. We believe in chain reactions: small things that shift tiny angles, and over the long run those tiny angles have enormous effects.")}</p>
+      <p class="mt-2">{L(lang,
+        "Una canasta cada domingo es uno de esos ángulos chiquitos.",
+        "A basket every Sunday is one of those tiny angles.")}</p>
+    </div>
+    <div class="reveal" data-delay="1">{img(lang, f"assets/images/gallery/equipo-completo-tacos-hermanos-{DOMAIN}.webp",
       L(lang,"Todo el equipo de Tacos Hermanos frente a una de sus casas","The entire Tacos Hermanos team in front of one of their houses"))}</div>
   </div>
 </section>""")
-    out.append(cta_band(L(lang,"¿Querés apoyar?","Want to help?"),
-      L(lang,"Escribinos por Instagram mientras publicamos los datos completos de la fundación.",
-             "Message us on Instagram while we publish the foundation's full details."),
+
+    PASOS = [("¡Comprá una canasta de ayuda, o las que quieras!","Buy an aid basket, or as many as you like",
+              "En cualquiera de nuestros restaurantes, en caja.","At any of our restaurants, at the till."),
+             ("¡Escribile un mensaje a los niños!","Write the children a message",
+              "Esa carta les llegará junto con tu canasta.","Your note travels with your basket."),
+             ("¡Tu canasta será entregada este domingo!","Your basket is delivered this Sunday",
+              "Si tu donación se realiza después del jueves, tu canasta será entregada el siguiente domingo.",
+              "If you donate after Thursday, your basket goes out the following Sunday.")]
+    pasos = "".join(f'<div class="step reveal" data-delay="{i%3}"><h3>{L(lang,a,b)}</h3><p>{L(lang,c,d)}</p></div>'
+                    for i,(a,b,c,d) in enumerate(PASOS))
+    out.append(f"""<section class="section band-cream somos" id="como-ayudar">
+  <div class="wrap">
+    <div class="center reveal mb-3">
+      <span class="eyebrow">{L(lang,"Cómo puedo ser parte","How can I take part")}</span>
+      <h2>{L(lang,"Tres pasos, y una canasta llega a un niño","Three steps, and a basket reaches a child")}</h2>
+    </div>
+    <div class="steps">{pasos}</div>
+    <p class="price-note center mt-3">{pend(L(lang,
+      "PENDIENTE DEL CLIENTE: cuánto cuesta una canasta y qué lleva dentro. Erika confirmó que por contabilidad no se puede facturar la donación en el restaurante, así que la vía en línea queda para la fase dos, junto con las gift cards.",
+      "PENDING FROM CLIENT: the price of a basket and what it contains. Erika confirmed that for accounting reasons the donation cannot be invoiced at the restaurant, so an online route waits for phase two, alongside the gift cards."), block=True)}</p>
+  </div>
+</section>""")
+
+    out.append(f"""<section class="section band-somos">
+  <div class="wrap narrow center">
+    <p class="lead reveal">{L(lang,
+      "Trabajamos de la mano con el programa Escuela Bíblica Dominical, de la Iglesia Bitinia, para entregar estas canastas de ayuda a los niños.",
+      "We work hand in hand with the Escuela Bíblica Dominical programme, from Iglesia Bitinia, to get these aid baskets to the children.")}</p>
+    <h2 class="mt-3 reveal">{L(lang,"Nada de esto sería posible sin la ayuda de Dios","None of this would be possible without God's help")}</h2>
+  </div>
+</section>""")
+
+    out.append(cta_band(L(lang,"¿Querés saber más?","Want to know more?"),
+      L(lang,"Estamos construyendo el sitio propio de Somos Hermanos. Mientras tanto, escribinos.",
+             "We are building the Somos Hermanos site of its own. In the meantime, write to us."),
       [f'<a class="btn btn--sun" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>']))
     return "\n".join(out)
 
@@ -540,6 +637,72 @@ def regala(lang):
     return "\n".join(out)
 
 # =========================================================================
+# EMPLEADOS  (unlisted, not in the nav, not in the sitemap, noindex)
+# =========================================================================
+def empleados(lang):
+    es = lang == "es"
+    VIS = [("Somos la cadena más grande, fuerte y próspera de comida mexicana en el mundo.",
+            "We are the largest, strongest and most prosperous Mexican food chain in the world."),
+           ("Multiplicamos nuestro modelo de negocios con éxito, consolidando alianzas idóneas.",
+            "We multiply our business model successfully, building the right alliances."),
+           ("Generamos bendición y prosperidad a nuestros clientes, colaboradores y aliados.",
+            "We generate blessing and prosperity for our guests, our team and our partners."),
+           ("Generamos valor real en cada interacción. Innovamos y servimos.",
+            "We create real value in every interaction. We innovate and we serve."),
+           ("Tacos Hermanos en todo el mundo.","Tacos Hermanos all over the world.")]
+    vis = "".join(f'<div class="card reveal" data-delay="{i%3}"><span class="card__num">0{i+1}</span>'
+                  f'<p>{L(lang,a,b)}</p></div>' for i,(a,b) in enumerate(VIS))
+    VAL = [("Honestidad","Honesty"),("Hermandad","Brotherhood"),("Valentía","Courage"),
+           ("Excelencia","Excellence"),("Alegría","Joy")]
+    val = "".join(f'<div class="card reveal" data-delay="{i%3}"><h3>{L(lang,a,b)}</h3></div>'
+                  for i,(a,b) in enumerate(VAL))
+    out = [f"""<section class="section band-dark">
+  <div class="wrap narrow center">
+    {badge_img(lang)}
+    <span class="eyebrow mt-3">{L(lang,"Sólo para el equipo","Team only")}</span>
+    <h1 class="mt-1">{L(lang,"Bienvenido a la familia","Welcome to the family")}</h1>
+    <p class="lead mt-2">{L(lang,
+      "Esta página no aparece en el menú ni en los buscadores. Es para que cualquier persona nueva entienda en cinco minutos quiénes somos y cómo trabajamos.",
+      "This page is not in the menu and not in search engines. It exists so anyone new understands who we are and how we work, in five minutes.")}</p>
+  </div>
+</section>""",
+    f"""<section class="section">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">{L(lang,"Cultura","Culture")}</span>
+    <h2 class="reveal">{L(lang,"Somos uno","We are one")}</h2>
+    <p class="lead mt-2 reveal">{L(lang,
+      "Somos uno, somos la suma de nuestros sueños, de nuestras luchas. Somos hermanos. El viaje de cada uno se integra al viaje del otro, coincidimos en la misma cancha, en la misma tierra. La cuidamos entre todos. Nuestras acciones siempre afectan a un hermano. Somos conscientes de esta realidad y la honramos con agradecimiento, responsabilidad y alegría. Nuestra victoria personal es la victoria de la empresa. Cuando triunfa uno, triunfamos todos. Juntos, somos invencibles.",
+      "We are one, we are the sum of our dreams and of our struggles. We are brothers. Each person's journey folds into everyone else's, we meet on the same field, on the same soil. We look after it together. What we do always touches a brother. We are aware of that, and we honour it with gratitude, responsibility and joy. A personal victory is a victory for the whole company. When one of us wins, all of us win. Together, we are unstoppable.")}</p>
+  </div>
+</section>""",
+    f"""<section class="section band-cream">
+  <div class="wrap">
+    <div class="center reveal mb-3"><span class="eyebrow">{L(lang,"Visión","Vision")}</span>
+      <h2>{L(lang,"A dónde vamos","Where we are going")}</h2></div>
+    <div class="grid grid--3">{vis}</div>
+    <p class="center mt-3 tagline reveal">{L(lang,"Claridad · Unidad · Propósito · Compromiso · Fe",
+                                                   "Clarity · Unity · Purpose · Commitment · Faith")}</p>
+  </div>
+</section>""",
+    f"""<section class="section">
+  <div class="wrap">
+    <div class="center reveal mb-3"><span class="eyebrow">{L(lang,"Valores","Values")}</span>
+      <h2>{L(lang,"Cómo nos comportamos","How we behave")}</h2></div>
+    <div class="grid grid--3">{val}</div>
+  </div>
+</section>""",
+    f"""<section class="section band-cream">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">{L(lang,"Protocolo de servicio","Service protocol")}</span>
+    <h2 class="reveal">{L(lang,"La regla de oro, paso a paso","The golden rule, step by step")}</h2>
+    <div class="mt-3 reveal">{pend(L(lang,
+      "PENDIENTE DE ERIKA: el protocolo de servicio y el protocolo de bienvenida. Ella los está actualizando porque la versión actual es del año pasado.",
+      "PENDING FROM ERIKA: the service protocol and the welcome protocol. She is updating them because the current version is from last year."), block=True)}</div>
+  </div>
+</section>"""]
+    return "\n".join(out)
+
+# =========================================================================
 # assemble
 # =========================================================================
 META = {
@@ -592,6 +755,13 @@ META = {
   "en": ("The Tacos Hermanos Foundation",
          "Tacos Hermanos has a foundation, born from the same idea as the restaurant: small actions, repeated, change the course of a life. See what it does.",
          "Tacos Hermanos foundation, social work El Salvador, donations")},
+ "empleados": {
+  "es": ("Equipo Tacos Hermanos, cultura, visión y valores",
+         "Página interna para el equipo de Tacos Hermanos: nuestra cultura, la visión, los valores y los protocolos de servicio.",
+         "cultura Tacos Hermanos, visión, valores, protocolo de servicio"),
+  "en": ("Tacos Hermanos team, culture, vision and values",
+         "Internal page for the Tacos Hermanos team: our culture, the vision, the values and the service protocols.",
+         "Tacos Hermanos culture, vision, values, service protocol")},
  "regala": {
   "es": ("Regala tacos a tu familia en El Salvador",
          "Comprá un voucher desde Estados Unidos y mandalo a tu familia en El Salvador. Diez, veinte o cincuenta dólares que se canjean en cualquiera de nuestras seis casas.",
@@ -600,12 +770,13 @@ META = {
          "Buy a voucher from the United States and send it to your family in El Salvador. Ten, twenty or fifty dollars, redeemable at any of our six houses.",
          "gift food El Salvador, restaurant voucher El Salvador, send food to El Salvador, remittances, Tacos Hermanos gift card")},
 }
-HEROES = {"home":"hero-tacos-hermanos","historia":"hero-historia-tacos-hermanos",
+HEROES = {"empleados":"hero-historia-tacos-hermanos","home":"hero-tacos-hermanos","historia":"hero-historia-tacos-hermanos",
           "menu":"hero-menu-tacos-hermanos","desayunos":"hero-desayunos-tacos-hermanos",
           "almuerzo":"hero-menu-tacos-hermanos","info":"hero-info-tacos-hermanos",
           "fundacion":"hero-fundacion-tacos-hermanos","regala":"hero-regala-tacos-hermanos"}
 BODY = {"home":home,"historia":historia,"menu":menu_hub,"desayunos":desayunos,
-        "almuerzo":almuerzo,"info":info,"fundacion":fundacion,"regala":regala}
+        "almuerzo":almuerzo,"info":info,"fundacion":fundacion,"regala":regala,
+        "empleados":empleados}
 
 def build():
     n = 0
@@ -613,8 +784,11 @@ def build():
         for lang, fn in (("es", es_f), ("en", en_f)):
             title, desc, kw = META[key][lang]
             extra = faq_jsonld(FAQ[lang]) if key in ("home", "info") else ""
+            if key == "empleados":
+                extra += "  <!-- unlisted: not in the nav, not in the sitemap -->\n"
             html = (head(lang, key, title, desc, kw, hero=f"{HEROES[key]}-{DOMAIN}.webp", extra=extra,
-                         with_menu=key in ("menu", "desayunos", "almuerzo"))
+                         with_menu=key in ("menu", "desayunos", "almuerzo"),
+                         noindex=key == "empleados")
                     + header(lang, key) + BODY[key](lang) + footer(lang, key))
             p = ROOT / fn
             p.parent.mkdir(parents=True, exist_ok=True)

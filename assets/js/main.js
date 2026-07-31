@@ -48,3 +48,23 @@
 
   items.forEach(function (el) { io.observe(el); });
 })();
+
+/* ---- video cards: nothing loads until someone actually asks for it ---- */
+(function () {
+  'use strict';
+  document.querySelectorAll('.video-card[data-video]').forEach(function (card) {
+    var btn = card.querySelector('.video-card__play');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      if (card.querySelector('video')) return;
+      var v = document.createElement('video');
+      v.src = card.dataset.video;
+      v.playsInline = true;
+      v.controls = true;
+      v.preload = 'auto';
+      card.appendChild(v);
+      card.classList.add('is-playing');
+      v.play().catch(function () { /* leave the controls for the user */ });
+    });
+  });
+})();

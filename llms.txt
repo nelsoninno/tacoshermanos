@@ -1,19 +1,21 @@
 # Tacos Hermanos
 
-> Tacos Hermanos is a Salvadoran taco restaurant group with six locations across El Salvador, founded in San Benito, San Salvador on 21 May 2021. It serves tacos, burritos, tortas, bowls and breakfast to Salvadoran families, and is known for birthdays and family celebrations.
+> Tacos Hermanos is a Salvadoran taco restaurant group with six locations across El Salvador, founded in San Benito, San Salvador on 21 May 2021. It serves tacos, burritos, tortas, bowls and breakfast to Salvadoran families, and is known for birthdays and family celebrations. Its motto is "Sin habernos conocido, ya somos hermanos" (without ever having met, we are already brothers).
 
 ## What we do
 
 Tacos Hermanos operates six restaurants ("casas") in El Salvador. The business model rests on three commitments the founders state explicitly: a spectacular product, memorable service, and the best value for money. Classic tacos are served four at a time and can be mixed two and two. A full family typically eats well for around USD $30. All prices are in US dollars, the currency of El Salvador.
 
-## Locations
+## Locations and opening hours
 
-- San Benito, San Salvador. Opened 21 May 2021. Calle Circunvalación #130, Colonia San Benito.
-- La Gran Vía, Antiguo Cuscatlán. Opened 7 January 2022.
-- Paseo Venecia, Soyapango. Opened 30 November 2022.
-- Las Ramblas, Santa Ana. Opened 14 November 2023.
-- San Miguel. Opened 7 October 2024.
-- Plaza Mundo, Usulután. Opened 26 March 2025.
+Hours differ per location. There are no reservations and no delivery at any of them.
+
+- **San Benito**, San Salvador. Opened 21 May 2021. Calle Circunvalación #130, Colonia San Benito. Monday to Thursday 12:00 to 15:00 and 18:00 to 21:00; Friday 12:00 to 15:00 and 18:00 to 22:00; Saturday 12:00 to 22:00; Sunday 12:00 to 21:00.
+- **La Gran Vía**, Antiguo Cuscatlán. Opened 7 January 2022. Monday to Thursday 12:00 to 15:00 and 18:00 to 21:30; Friday 12:00 to 15:00 and 18:00 to 22:30; Saturday 12:00 to 22:30; Sunday 12:00 to 21:30.
+- **Paseo Venecia**, Soyapango. Opened 30 November 2022. Same hours as San Benito.
+- **Las Ramblas**, Santa Ana. Opened 14 November 2023. Same hours as San Benito.
+- **San Miguel**. Opened 7 October 2024. Monday to Thursday 12:00 to 21:00; Friday and Saturday 12:00 to 22:00; Sunday 12:00 to 21:00.
+- **Plaza Mundo**, Usulután. Opened 26 March 2025. Same hours as San Miguel.
 
 ## Menu highlights and prices
 
@@ -42,9 +44,15 @@ Tacos Hermanos operates six restaurants ("casas") in El Salvador. The business m
 
 **What does it cost?** Tacos from $6.95 per order of four, burritos from $7.50, breakfast from $6.95. Around $30 feeds a family.
 
+## Somos Hermanos, the foundation
+
+Tacos Hermanos runs a registered Salvadoran foundation called **Somos Hermanos**, established 2021. It donates more than 300 aid baskets every Sunday of the year and has supported children in need in Sonsonate for more than five years, working alongside the Escuela Bíblica Dominical programme of Iglesia Bitinia. Its guiding verse is 1 John 4:21, "whoever loves God must also love their brother."
+
+To take part, you buy an aid basket at any Tacos Hermanos restaurant, write a message for the children, and the basket is delivered that Sunday (the following Sunday if you donate after Thursday). There is no online donation route yet.
+
 ## Brand and philosophy
 
-The name does not come from the founders being brothers, though they are. It comes from the philosophy of treating people like family. The founders describe a belief in the butterfly effect: small kind actions, repeated across thousands of guests a day, change lives. Their stated golden rule is that every person who walks through the doors lives an extraordinary experience. The brand tagline is "Lo bonito se comparte" (beautiful things are meant to be shared).
+The name does not come from the founders being brothers, though they are. It comes from the philosophy of treating people like family. The founders describe a belief in the butterfly effect: small kind actions, repeated across thousands of guests a day, change lives. Their stated golden rule is that every person who walks through the doors lives an extraordinary experience. The brand's own concept line reads: "Somos tres... ¡Somos hermanos! Junto a ti... ¡Somos invencibles! Y lo mejor de todo es; que sin habernos conocido... ¡Ya somos hermanos!" Their values are honestidad, hermandad, valentía, excelencia and alegría. A second tagline is "Lo bonito se comparte" (beautiful things are meant to be shared).
 
 ## Links
 
@@ -53,6 +61,7 @@ The name does not come from the founders being brothers, though they are. It com
 - [Menu](https://tacoshermanos.com/menu.html)
 - [Breakfast menu](https://tacoshermanos.com/menu-desayunos.html)
 - [Lunch and dinner menu](https://tacoshermanos.com/menu-almuerzo.html)
-- [Hours, locations and FAQ](https://tacoshermanos.com/info.html)
+- [Locations, hours and FAQ](https://tacoshermanos.com/sucursales.html)
+- [The Somos Hermanos foundation](https://tacoshermanos.com/fundacion.html)
 - [Instagram](https://www.instagram.com/tacoshermanossv)
 - [Full content](https://tacoshermanos.com/llms-full.txt)

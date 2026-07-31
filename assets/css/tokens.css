@@ -47,9 +47,22 @@
   --verde-claro:  #389975;   /* lighter green tint                           */
   --crema:        #F6E2B4;   /* crema, the brand cream                       */
   --durazno:      #F7CC91;   /* peach tint                                   */
-  --rojo:         #F0512A;   /* rojo tatemado, the accent                    */
+  --rojo:         #F0512A;   /* rojo tatemado. USED SPARINGLY, see note below */
   --rojo-hondo:   #CC3D26;   /* deep red                                     */
-  /* ======================================================================= */
+
+  /* Somos Hermanos, the foundation, has its own blue identity. Sampled from
+     their in-store stand artwork. Only used inside foundation sections.     */
+  --azul-sh:       #3D79C6;
+  --azul-sh-hondo: #2F5F9E;
+  --azul-sh-crema: #EFDD9F;
+  /* =======================================================================
+     COLOUR RULE, from Erika Silva on the 31 July call: "nosotros no ocupamos
+     mucho el naranja, ocupamos más el verde y las tonalidades de verde".
+     Green and its tints carry the site. Orange (--rojo) appears ONLY on
+     primary call-to-action buttons and on the final "¡Ya somos hermanos!"
+     line, which is orange in their own official Concepto artwork.
+     Do not reintroduce orange anywhere else.
+     ======================================================================= */
 
   /* Semantic roles used across the site */
   --bg:        #FFFBF1;   /* page background, cream lifted almost to white   */

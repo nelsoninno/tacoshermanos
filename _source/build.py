@@ -28,31 +28,58 @@ PAGES = {
     "menu":      ("menu.html",             "en/menu.html"),
     "desayunos": ("menu-desayunos.html",   "en/menu-breakfast.html"),
     "almuerzo":  ("menu-almuerzo.html",    "en/menu-lunch.html"),
-    "info":      ("info.html",             "en/info.html"),
+    "info":      ("sucursales.html",       "en/locations.html"),
     "fundacion": ("fundacion.html",        "en/foundation.html"),
     "regala":    ("regala-tacos.html",     "en/gift-tacos.html"),
+    "empleados": ("empleados.html",        "en/team.html"),
 }
-NAV = ["home", "historia", "menu", "regala", "fundacion", "info"]
+NAV = ["home", "historia", "menu", "info", "regala", "fundacion"]
 NAV_LABEL = {
     "es": {"home":"Inicio","historia":"Nuestra Historia","menu":"Menú",
-           "regala":"Regala Tacos","fundacion":"La Fundación","info":"Info"},
+           "regala":"Regala Tacos","fundacion":"La Fundación","info":"Sucursales","empleados":"Equipo"},
     "en": {"home":"Home","historia":"Our Story","menu":"Menu",
-           "regala":"Gift Tacos","fundacion":"The Foundation","info":"Info"},
+           "regala":"Gift Tacos","fundacion":"The Foundation","info":"Locations","empleados":"Team"},
 }
 
+# Hours transcribed from the client's own "Horarios Sucursales" artwork,
+# received 31 July 2026. La Gran Vía changes once breakfast launches.
+H_STD  = [("Lunes a jueves","12:00 md a 3:00 pm · 6:00 pm a 9:00 pm"),
+          ("Viernes","12:00 md a 3:00 pm · 6:00 pm a 10:00 pm"),
+          ("Sábado","12:00 md a 10:00 pm"),
+          ("Domingo","12:00 md a 9:00 pm")]
+H_GV   = [("Lunes a jueves","12:00 md a 3:00 pm · 6:00 pm a 9:30 pm"),
+          ("Viernes","12:00 md a 3:00 pm · 6:00 pm a 10:30 pm"),
+          ("Sábado","12:00 md a 10:30 pm"),
+          ("Domingo","12:00 md a 9:30 pm")]
+H_CORR = [("Lunes a jueves","12:00 md a 9:00 pm"),
+          ("Viernes y sábado","12:00 md a 10:00 pm"),
+          ("Domingo","12:00 md a 9:00 pm")]
+H_STD_EN  = [("Monday to Thursday","12:00 pm to 3:00 pm · 6:00 pm to 9:00 pm"),
+             ("Friday","12:00 pm to 3:00 pm · 6:00 pm to 10:00 pm"),
+             ("Saturday","12:00 pm to 10:00 pm"),
+             ("Sunday","12:00 pm to 9:00 pm")]
+H_GV_EN   = [("Monday to Thursday","12:00 pm to 3:00 pm · 6:00 pm to 9:30 pm"),
+             ("Friday","12:00 pm to 3:00 pm · 6:00 pm to 10:30 pm"),
+             ("Saturday","12:00 pm to 10:30 pm"),
+             ("Sunday","12:00 pm to 9:30 pm")]
+H_CORR_EN = [("Monday to Thursday","12:00 pm to 9:00 pm"),
+             ("Friday and Saturday","12:00 pm to 10:00 pm"),
+             ("Sunday","12:00 pm to 9:00 pm")]
+
+# name, opened_es, opened_en, city, place, photo slug, video slug or None, hours es, hours en
 CASAS = [
     ("San Benito","21 de mayo de 2021","May 21, 2021","San Salvador",
-     "Calle Circunvalación #130, Colonia San Benito","casa-san-benito"),
+     "Calle Circunvalación #130, Colonia San Benito","casa-san-benito",None,H_STD,H_STD_EN),
     ("La Gran Vía","7 de enero de 2022","January 7, 2022","Antiguo Cuscatlán",
-     "Centro Comercial La Gran Vía","fachada-de-noche"),
+     "Centro Comercial La Gran Vía","fachada-de-noche","sucursal-la-gran-via",H_GV,H_GV_EN),
     ("Paseo Venecia, Soyapango","30 de noviembre de 2022","November 30, 2022","Soyapango",
-     "Paseo Venecia","salon-principal"),
+     "Paseo Venecia","salon-principal",None,H_STD,H_STD_EN),
     ("Las Ramblas, Santa Ana","14 de noviembre de 2023","November 14, 2023","Santa Ana",
-     "Centro Comercial Las Ramblas","casa-iluminada-de-noche"),
+     "Centro Comercial Las Ramblas","casa-iluminada-de-noche","apertura-santa-ana",H_STD,H_STD_EN),
     ("San Miguel","7 de octubre de 2024","October 7, 2024","San Miguel",
-     "San Miguel","rotulo-interior"),
+     "San Miguel","rotulo-interior","apertura-san-miguel",H_CORR,H_CORR_EN),
     ("Plaza Mundo, Usulután","26 de marzo de 2025","March 26, 2025","Usulután",
-     "Plaza Mundo, Usulután","salon-lleno"),
+     "Plaza Mundo, Usulután","salon-lleno","apertura-usulutan",H_CORR,H_CORR_EN),
 ]
 
 VOUCHERS = [
@@ -107,10 +134,26 @@ def img(lang, path, alt, priority=False, cls_=""):
     return f'<img src="{rel(lang,path)}" alt="{alt}"{c}{extra}>'
 
 # --------------------------------------------------------------------------
+def _ohs(spec):
+    return [{"@type":"OpeningHoursSpecification","dayOfWeek":d,"opens":o,"closes":c}
+            for d,o,c in spec]
+
+# (days, opens, closes) per branch, from the client's Horarios artwork
+LD_STD = [(["Monday","Tuesday","Wednesday","Thursday"],"12:00","15:00"),
+          (["Monday","Tuesday","Wednesday","Thursday"],"18:00","21:00"),
+          (["Friday"],"12:00","15:00"), (["Friday"],"18:00","22:00"),
+          (["Saturday"],"12:00","22:00"), (["Sunday"],"12:00","21:00")]
+LD_GV  = [(["Monday","Tuesday","Wednesday","Thursday"],"12:00","15:00"),
+          (["Monday","Tuesday","Wednesday","Thursday"],"18:00","21:30"),
+          (["Friday"],"12:00","15:00"), (["Friday"],"18:00","22:30"),
+          (["Saturday"],"12:00","22:30"), (["Sunday"],"12:00","21:30")]
+LD_CORR= [(["Monday","Tuesday","Wednesday","Thursday"],"12:00","21:00"),
+          (["Friday","Saturday"],"12:00","22:00"), (["Sunday"],"12:00","21:00")]
+LD_BY_BRANCH = {"San Benito":LD_STD,"La Gran Vía":LD_GV,"Paseo Venecia, Soyapango":LD_STD,
+                "Las Ramblas, Santa Ana":LD_STD,"San Miguel":LD_CORR,"Plaza Mundo, Usulután":LD_CORR}
+
 def graph_jsonld(lang, with_menu=False):
-    hours = [{"@type":"OpeningHoursSpecification",
-              "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-              "opens":"12:00","closes":"22:00"}]
+    hours = _ohs(LD_STD)
     org = {
         "@type":["Organization","Restaurant","LocalBusiness"], "@id":f"{BASE}/#org",
         "name":"Tacos Hermanos",
@@ -118,7 +161,7 @@ def graph_jsonld(lang, with_menu=False):
         "url":BASE+"/",
         "logo":f"{BASE}/assets/images/logos/wordmark-tacos-hermanos-{DOMAIN}.svg",
         "image":f"{BASE}/assets/images/social-share/social-share-tacos-hermanos-{DOMAIN}.jpg",
-        "slogan":"Lo bonito se comparte",
+        "slogan":"Sin habernos conocido, ya somos hermanos",
         "description":("Cadena salvadoreña de tacos con seis casas en El Salvador. Tacos, burros, "
                        "tortas y desayunos para la familia salvadoreña, con un producto espectacular, "
                        "un servicio memorable y el mejor valor por su dinero. Fundada en 2021."
@@ -162,8 +205,9 @@ def graph_jsonld(lang, with_menu=False):
                  "name":f"Tacos Hermanos {c[0]}","parentOrganization":{"@id":f"{BASE}/#org"},
                  "servesCuisine":["Mexican","Salvadoran"],"priceRange":"$$",
                  "acceptsReservations":"False","hasMenu":{"@id":f"{BASE}/#menu"},
-                 "address":{"@type":"PostalAddress","addressCountry":"SV","addressLocality":c[3]},
-                 "openingHoursSpecification":hours}
+                 "address":{"@type":"PostalAddress","addressCountry":"SV","addressLocality":c[3],
+                            "streetAddress":c[4]},
+                 "openingHoursSpecification":_ohs(LD_BY_BRANCH[c[0]])}
                 for i, c in enumerate(CASAS)]
     nodes = [org, website] + ([menu] if with_menu else []) + branches
     g = {"@context":"https://schema.org","@graph":nodes}
@@ -176,7 +220,7 @@ def faq_jsonld(pairs):
     return '  <script type="application/ld+json">\n' + json.dumps(d, ensure_ascii=False, indent=2) + "\n  </script>\n"
 
 # --------------------------------------------------------------------------
-def head(lang, key, title, desc, keywords, hero=None, extra="", with_menu=False):
+def head(lang, key, title, desc, keywords, hero=None, extra="", with_menu=False, noindex=False):
     es_url, en_url = url_of(key,"es"), url_of(key,"en")
     canon = es_url if lang=="es" else en_url
     a = lambda p: rel(lang, p)
@@ -216,7 +260,7 @@ def head(lang, key, title, desc, keywords, hero=None, extra="", with_menu=False)
   <meta name="twitter:description" content="{desc}">
   <meta name="twitter:image" content="{share}">
 
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="robots" content="{'noindex, nofollow' if noindex else 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}">
   <meta name="author" content="Tacos Hermanos">
   <meta name="theme-color" content="#2D8769">
   <meta name="geo.region" content="SV">
@@ -254,7 +298,7 @@ def header(lang, current):
   <div class="wrap site-header__inner">
     <a class="brand" href="index.html" aria-label="Tacos Hermanos">
       {cls(ISOTIPO,"brand__mark")}
-      <span class="brand__name">Tacos<span>Hermanos</span></span>
+      {cls(WORDMARK,"brand__word")}
     </a>
     <button class="nav-toggle" aria-label="{navlbl}" aria-expanded="false"><span></span></button>
     <nav class="nav" aria-label="{'Principal' if lang=='es' else 'Main'}">
@@ -445,3 +489,75 @@ def mapa(lang):
     <span><i class="mapa__dot" style="background:var(--rojo)"></i>{'Ellos comen en Tacos Hermanos' if es else 'They eat at Tacos Hermanos'}</span>
   </div>
 </div>"""
+
+
+# --------------------------------------------------------------------------
+# components added after the 31 July review with Erika Silva
+# --------------------------------------------------------------------------
+def icono(lang, name, cls_="icono", alt=""):
+    p = f"assets/images/iconos/icono-{name}-tacos-hermanos-{DOMAIN}.webp"
+    a = f' alt="{alt}"' if alt else ' alt="" aria-hidden="true"'
+    return f'<img class="{cls_}" src="{rel(lang,p)}"{a} loading="lazy" width="160" height="160">'
+
+def icon_rule(lang, name="arco"):
+    return f'<div class="icon-rule">{icono(lang,name)}</div>'
+
+def concepto(lang):
+    """The brand's official Concepto lockup, verbatim from their artwork.
+    Erika asked for this to be the first thing anyone sees."""
+    es = lang == "es"
+    l1 = "Somos tres…" if es else "There are three of us…"
+    l2 = "Junto a ti…" if es else "Together with you…"
+    l3 = ("Y lo mejor de todo es; que sin habernos conocido…" if es
+          else "And the best part is, without ever having met…")
+    return f"""<div class="concepto">
+      <span class="concepto__line">{l1}</span>
+      <span class="concepto__shout">¡Somos hermanos!</span>
+      <span class="concepto__line">{l2}</span>
+      <span class="concepto__shout">¡Somos invencibles!</span>
+      <span class="concepto__line">{l3}</span>
+      <span class="concepto__shout concepto__shout--final">¡Ya somos hermanos!</span>
+    </div>"""
+
+PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>')
+
+def video_card(lang, slug, label, alt):
+    """Poster only until clicked. Nothing preloads, so the page stays fast."""
+    v = f"assets/video/{slug}-tacos-hermanos-{DOMAIN}.mp4"
+    poster = f"assets/images/video-posters/{slug}-poster-tacos-hermanos-{DOMAIN}.webp"
+    play = "Reproducir el video" if lang == "es" else "Play the video"
+    return f"""<figure class="video-card reveal" data-video="{rel(lang,v)}">
+        <img class="video-card__poster" src="{rel(lang,poster)}" alt="{alt}" loading="lazy" decoding="async" width="900" height="1600">
+        <button class="video-card__play" type="button" aria-label="{play}: {label}"><span>{PLAY_SVG}</span></button>
+        <figcaption class="video-card__label">{label}</figcaption>
+      </figure>"""
+
+def horario_block(lang, rows):
+    out = "".join(f'<div class="horario__row"><span class="horario__day">{d}</span>'
+                  f'<span class="horario__time">{t}</span></div>' for d, t in rows)
+    return f'<div class="horario">{out}</div>'
+
+def sucursal_cards(lang):
+    out = []
+    for c in CASAS:
+        nombre, f_es, f_en, ciudad, lugar, foto, video, h_es, h_en = c
+        media = (video_card(lang, video, nombre,
+                            (f"Video de apertura de Tacos Hermanos {nombre}" if lang == "es"
+                             else f"Opening video for Tacos Hermanos {nombre}"))
+                 if video else
+                 f'<figure class="video-card reveal">'
+                 + img(lang, f"assets/images/gallery/{foto}-tacos-hermanos-{DOMAIN}.webp",
+                       (f"Tacos Hermanos {nombre}" if lang == "es" else f"Tacos Hermanos {nombre}"),
+                       cls_="video-card__poster")
+                 + f'<figcaption class="video-card__label">{nombre}</figcaption></figure>')
+        desde = ("Desde el " + f_es) if lang == "es" else ("Since " + f_en)
+        out.append(f"""<article class="sucursal reveal">
+        {media}
+        <div class="sucursal__body">
+          <h3>{nombre}</h3>
+          <span class="sucursal__place">{lugar}</span>
+          <span class="loc__since">{desde}</span>
+          {horario_block(lang, h_es if lang == "es" else h_en)}
+        </div>
+      </article>""")
+    return f'<div class="sucursales">{"".join(out)}</div>'

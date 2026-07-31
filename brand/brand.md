@@ -48,11 +48,41 @@ All four lockups were extracted as clean vector from the brand manual and live i
 The base file uses `fill="currentColor"`, so inlining it lets CSS colour it. The `-crema-` and
 `-verde-` variants are pre-coloured for use as plain `<img>`.
 
+## The colour rule, from the client
+
+Erika Silva, 31 July 2026: *"nosotros no ocupamos mucho el naranja, ocupamos más el verde
+y las tonalidades de verde… quitar un poquito más de naranja, ya que es el color que no
+ocupamos porque no nos encanta."*
+
+So: green and its tints carry the site. Orange survives in exactly two places, both of
+which she approved: primary call-to-action buttons, and the final "¡Ya somos hermanos!"
+line, which is orange in their own Concepto artwork. Do not reintroduce it anywhere else.
+
+## Somos Hermanos, the foundation, has its own palette
+
+| Role | Hex |
+|---|---|
+| Foundation blue | `#3D79C6` |
+| Foundation blue, deep | `#2F5F9E` |
+| Foundation cream | `#EFDD9F` |
+
+Sampled from their in-store stand. Restaurant green appears in foundation material only
+where Tacos Hermanos is credited as the donor.
+
+## Icons
+
+Five brand icons live in `assets/images/iconos/`: salsa bottle, taco, tray, arch and
+tostada. They were cut from the client's own icon sheet with the green knocked out, so
+they sit on any background. Use them quietly, as section rules and next to the pillars.
+
 ## Voice
 
 The client's own words, taken from the founder interview. Use these, do not invent new ones.
 
-- "Lo bonito se comparte." The tagline. It belongs on the site.
+- The Concepto, their official lockup and now the hero:
+  "Somos tres… ¡Somos hermanos! / Junto a ti… ¡Somos invencibles! /
+  Y lo mejor de todo es; que sin habernos conocido… ¡Ya somos hermanos!"
+- "Lo bonito se comparte." The second tagline.
 - "¡Ya somos hermanos!" Used in the graphic language.
 - "¡Aquí es donde la vida se celebra!" From the concept deck.
 - "Una experiencia extraordinaria, una experiencia que cambia vidas." The golden rule.
@@ -68,4 +98,5 @@ English is a natural translation, never literal. Dish names stay in Spanish in b
 - Do not strip Spanish accents, ñ, or the opening ¡ and ¿.
 - Do not translate dish names.
 - Do not promise reservations or delivery. The company offers neither, on purpose.
-- Do not invent hours, phone numbers or foundation details. They are still pending from the client.
+- Do not credit anything to Alfonso or "Pocho" by name. There are three brothers.
+- Do not invent addresses, phone numbers or basket prices. Those are still pending.

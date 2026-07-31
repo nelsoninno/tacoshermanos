@@ -6,3 +6,8 @@ Allow: /
 
 # AI guide: /llms.txt
 Sitemap: https://tacoshermanos.com/sitemap.xml
+
+# The team page is unlisted on purpose.
+User-agent: *
+Disallow: /empleados.html
+Disallow: /en/team.html

@@ -27,7 +27,7 @@ h3{font-size:clamp(1.25rem,1.1rem + .7vw,1.7rem)}
 p+p{margin-top:1em}
 
 ::selection{background:var(--accent);color:var(--bg)}
-:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:3px solid var(--verde-claro);outline-offset:3px;border-radius:4px}
 
 /* ---------- layout helpers --------------------------------------------- */
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(1.15rem,4vw,2.5rem)}
@@ -143,25 +143,6 @@ p+p{margin-top:1em}
 .hero__sub{font-size:clamp(1.08rem,1rem + .6vw,1.42rem);max-width:40ch;color:color-mix(in srgb,var(--crema) 90%,transparent)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.4rem}
 
-/* rotating word marquee under the hero */
-.marquee{
-  background:var(--rojo);color:var(--crema);overflow:hidden;
-  padding-block:.85rem;border-block:3px solid var(--ink);
-}
-.marquee__track{
-  display:flex;width:max-content;
-  animation:slide 42s linear infinite;
-  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
-  letter-spacing:.06em;font-size:clamp(.9rem,.85rem + .3vw,1.1rem);
-}
-/* Two identical groups sit side by side and the track slides exactly one group
-   width, so the second group lands where the first started: no gap, ever. */
-.marquee__group{display:flex;flex:0 0 auto;gap:2.5rem;padding-right:2.5rem}
-.marquee__group span{display:flex;align-items:center;gap:2.5rem;white-space:nowrap}
-.marquee__group span::after{content:"\25CF";font-size:.6em;opacity:.7}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.marquee__track{animation:none}}
-
 /* ---------- generic grids + cards -------------------------------------- */
 .grid{display:grid;gap:clamp(1.1rem,.8rem + 1.4vw,2rem)}
 .grid--2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
@@ -176,7 +157,7 @@ p+p{margin-top:1em}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px color-mix(in srgb,var(--ink) 9%,transparent);border-color:transparent}
 .card__num{
   font-family:var(--font-display);font-size:2.6rem;font-weight:800;
-  color:var(--rojo);line-height:1;display:block;margin-bottom:.7rem;
+  color:var(--verde);line-height:1;display:block;margin-bottom:.7rem;
 }
 .card h3{margin-bottom:.6rem}
 .card p{color:var(--muted);font-size:.98rem}
@@ -222,7 +203,7 @@ p+p{margin-top:1em}
 .timeline__name{font-family:var(--font-display);font-weight:700;font-size:1.12rem}
 .timeline__date{color:var(--muted);font-size:.93rem}
 .timeline__n{
-  font-family:var(--font-display);font-weight:800;color:var(--rojo);
+  font-family:var(--font-display);font-weight:800;color:var(--verde-claro);
   font-size:1.5rem;line-height:1;
 }
 @media (max-width:620px){
@@ -257,27 +238,27 @@ p+p{margin-top:1em}
 .dish__name{font-family:var(--font-display);font-weight:800;font-size:1.12rem;letter-spacing:-.01em}
 .dish__price{
   font-family:var(--font-display);font-weight:800;font-size:1.12rem;
-  color:var(--rojo-hondo);white-space:nowrap;
+  color:var(--verde-hondo);white-space:nowrap;
 }
 .dish__desc{grid-column:1/-1;color:var(--muted);font-size:.98rem;max-width:62ch}
 .dish__tag{
   display:inline-block;margin-left:.55rem;vertical-align:middle;
   font-size:.63rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  padding:.22rem .55rem;border-radius:99px;background:var(--rojo);color:var(--crema);
+  padding:.22rem .55rem;border-radius:99px;background:var(--verde);color:var(--crema);
 }
-.dish__hint{display:block;margin-top:.4rem;font-size:.86rem;color:var(--rojo-hondo);font-weight:600}
+.dish__hint{display:block;margin-top:.4rem;font-size:.86rem;color:var(--verde-hondo);font-weight:600}
 
 .drinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.1rem 2.4rem}
 .drink{display:flex;align-items:baseline;gap:.6rem;padding:.62rem 0;border-bottom:1px dotted var(--line)}
 .drink__name{font-weight:600}
 .drink__dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-.28em)}
-.drink__price{font-weight:800;color:var(--rojo-hondo);font-family:var(--font-display)}
+.drink__price{font-weight:800;color:var(--verde-hondo);font-family:var(--font-display)}
 
 .menu-includes{
   background:var(--surface);border-radius:18px;
   padding:clamp(1.2rem,1rem + .8vw,1.8rem) clamp(1.3rem,1rem + 1vw,2.2rem);
   margin-bottom:clamp(2rem,1.5rem + 1.5vw,3rem);
-  border-left:5px solid var(--rojo);
+  border-left:5px solid var(--verde-claro);
 }
 .menu-includes strong{font-family:var(--font-display)}
 
@@ -293,7 +274,7 @@ p+p{margin-top:1em}
 .loc__meta{font-size:.94rem;color:var(--muted)}
 .loc__since{
   align-self:flex-start;margin-top:.5rem;font-size:.7rem;font-weight:800;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--rojo-hondo);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--verde-hondo);
 }
 
 /* ---------- vouchers ---------------------------------------------------- */
@@ -311,7 +292,7 @@ p+p{margin-top:1em}
 .voucher__flag{
   position:absolute;top:0;right:0;
   display:inline-flex;align-items:center;gap:.4rem;
-  background:var(--rojo);color:var(--crema);
+  background:var(--verde-hondo);color:var(--crema);
   font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
   padding:.42rem .9rem;border-bottom-left-radius:14px;white-space:nowrap;
 }
@@ -374,7 +355,7 @@ p+p{margin-top:1em}
 .step::before{
   counter-increment:step;content:counter(step);
   position:absolute;top:0;left:0;width:2.4rem;height:2.4rem;border-radius:99px;
-  display:grid;place-items:center;background:var(--rojo);color:var(--crema);
+  display:grid;place-items:center;background:var(--verde);color:var(--crema);
   font-family:var(--font-display);font-weight:800;font-size:1.15rem;
 }
 .step h3{font-size:1.15rem;margin-bottom:.5rem}
@@ -399,7 +380,7 @@ p+p{margin-top:1em}
 .footer-grid{display:grid;gap:2.2rem;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin-bottom:2.8rem}
 .footer-col h4{
   font-size:.74rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--accent-2);margin-bottom:1rem;
+  color:var(--durazno);margin-bottom:1rem;
 }
 .footer-col li{margin-bottom:.55rem;font-size:.95rem}
 .footer-col a{text-decoration:none;color:color-mix(in srgb,var(--footer-fg) 78%,transparent);transition:color .2s}
@@ -494,7 +475,7 @@ p+p{margin-top:1em}
 .tagline{
   font-family:var(--font-display);font-weight:800;text-transform:uppercase;
   letter-spacing:.18em;font-size:clamp(.72rem,.68rem + .25vw,.9rem);
-  color:var(--rojo);
+  color:var(--verde);
 }
 
 /* far-away countries sit back so the eye follows the arc */
@@ -502,3 +483,109 @@ p+p{margin-top:1em}
   stroke:color-mix(in srgb,var(--crema) 14%,transparent)}
 .mapa__land{stroke-linejoin:round}
 .mapa__label{paint-order:stroke fill;stroke:color-mix(in srgb,var(--verde-hondo) 85%,transparent);stroke-width:4px;stroke-linejoin:round}
+
+/* ---------- header: real isotipo + real wordmark, no drawn text --------- */
+.brand{gap:.65rem}
+.brand__mark{width:38px;height:38px;color:var(--verde)}
+.brand__word{height:26px;width:auto;color:var(--verde)}
+.site-footer .brand__mark,.site-footer .brand__word{color:var(--crema)}
+
+/* ---------- hero concepto block (the official Tacos Hermanos lockup) ---- */
+.concepto{display:flex;flex-direction:column;gap:.15rem;margin-bottom:1.5rem}
+.concepto__line{
+  font-family:var(--font-display);font-weight:500;line-height:1.15;
+  font-size:clamp(1rem,.9rem + .7vw,1.5rem);
+  color:color-mix(in srgb,var(--crema) 88%,transparent);
+}
+.concepto__shout{
+  font-family:var(--font-display);font-weight:800;line-height:1;
+  font-size:clamp(1.8rem,1.1rem + 3.4vw,3.9rem);letter-spacing:-.025em;
+  color:var(--durazno);
+}
+.concepto__shout--final{color:var(--rojo)}
+.hero--concepto .hero__inner{max-width:980px}
+.hero__h1{
+  font-size:clamp(1.05rem,.95rem + .6vw,1.45rem);font-weight:600;letter-spacing:0;
+  line-height:1.35;max-width:44ch;
+  color:color-mix(in srgb,var(--crema) 90%,transparent);
+  font-family:var(--font-body);
+}
+.hero__quick{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.hero__quick a{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.3rem;border-radius:999px;text-decoration:none;font-weight:700;
+  font-size:.94rem;border:2px solid color-mix(in srgb,var(--crema) 45%,transparent);
+  color:var(--crema);transition:background .2s,border-color .2s,color .2s,transform .18s;
+}
+.hero__quick a:hover{background:var(--crema);color:var(--verde-hondo);border-color:var(--crema);transform:translateY(-2px)}
+.hero__quick a.is-primary{background:var(--rojo);border-color:var(--rojo);color:var(--crema)}
+.hero__quick a.is-primary:hover{background:var(--rojo-hondo);border-color:var(--rojo-hondo);color:var(--crema)}
+
+/* ---------- brand icons used as quiet decoration --------------------- */
+.icono{width:clamp(38px,4vw,54px);height:auto;opacity:.9}
+.icono--lg{width:clamp(64px,8vw,104px)}
+.icon-rule{display:flex;align-items:center;justify-content:center;gap:1.6rem;margin-block:clamp(1.6rem,3vw,3rem)}
+.icon-rule::before,.icon-rule::after{content:"";flex:1;max-width:180px;height:2px;background:var(--line)}
+.band-dark .icon-rule::before,.band-dark .icon-rule::after{background:color-mix(in srgb,var(--crema) 24%,transparent)}
+
+/* ---------- video cards (poster + click to play, nothing autoloads) ---- */
+.video-card{position:relative;border-radius:20px;overflow:hidden;background:var(--verde-hondo);aspect-ratio:9/16}
+.video-card img,.video-card video{width:100%;height:100%;object-fit:cover;display:block}
+.video-card video{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.video-card.is-playing video{opacity:1}
+.video-card.is-playing .video-card__poster,
+.video-card.is-playing .video-card__play,
+.video-card.is-playing .video-card__label{opacity:0;pointer-events:none}
+.video-card__poster{transition:opacity .35s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.video-card:hover .video-card__poster{transform:scale(1.03)}
+.video-card__play{
+  position:absolute;inset:0;display:grid;place-items:center;border:0;background:none;
+  cursor:pointer;transition:opacity .3s ease;
+}
+.video-card__play span{
+  width:64px;height:64px;border-radius:999px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--crema) 92%,transparent);
+  box-shadow:0 10px 30px color-mix(in srgb,var(--ink) 32%,transparent);
+  transition:transform .2s ease;
+}
+.video-card__play:hover span{transform:scale(1.08)}
+.video-card__play svg{width:22px;height:22px;fill:var(--verde-hondo);margin-left:3px}
+.video-card__label{
+  position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.1rem .9rem;
+  font-family:var(--font-display);font-weight:800;color:var(--crema);font-size:1.02rem;
+  background:linear-gradient(transparent,color-mix(in srgb,var(--verde-hondo) 92%,transparent));
+  transition:opacity .3s ease;pointer-events:none;
+}
+
+/* ---------- sucursal cards ---------------------------------------------- */
+.sucursales{display:grid;gap:clamp(1.2rem,1rem + 1.4vw,2.2rem);
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.sucursal{display:flex;flex-direction:column;gap:1rem}
+.sucursal__body{display:flex;flex-direction:column;gap:.35rem}
+.sucursal h3{font-size:1.3rem}
+.sucursal__place{font-size:.93rem;color:var(--muted);font-weight:600}
+.horario{margin-top:.7rem;border-top:1px solid var(--line);padding-top:.7rem}
+.horario__row{display:flex;justify-content:space-between;gap:1rem;padding:.28rem 0;font-size:.92rem}
+.horario__day{font-weight:700}
+.horario__time{color:var(--muted);text-align:right;white-space:nowrap}
+
+/* ---------- foundation section uses the Somos Hermanos blue ------------ */
+.somos{--verde:var(--azul-sh);--verde-hondo:var(--azul-sh-hondo)}
+.somos .eyebrow{color:var(--azul-sh)}
+.band-somos{background:var(--azul-sh);color:#FFFFFF}
+.band-somos .eyebrow{color:var(--crema)}
+.band-somos p,.band-somos .lead{color:color-mix(in srgb,#FFFFFF 88%,transparent)}
+.versiculo{
+  font-family:var(--font-display);font-weight:600;font-style:italic;
+  font-size:clamp(1.2rem,1rem + 1vw,1.8rem);line-height:1.3;
+}
+.versiculo cite{display:block;margin-top:.6rem;font-size:.85rem;font-style:normal;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.cifras{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-block:2rem}
+.cifra__n{font-family:var(--font-display);font-weight:800;line-height:.9;
+  font-size:clamp(3rem,2rem + 4vw,5.4rem);letter-spacing:-.04em}
+.cifra__t{display:block;margin-top:.6rem;font-size:.98rem}
+
+/* the eyebrow sits on green in heroes and dark bands, so it needs to lift */
+.hero .eyebrow{color:var(--durazno)}
+.band-somos .cifra__t{color:color-mix(in srgb,#FFFFFF 88%,transparent)}

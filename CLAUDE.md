@@ -31,7 +31,7 @@ The HTML is **generated**, not hand-written. Editing an `.html` file directly wo
 overwritten on the next build. Edit the source and rebuild:
 
 ```
-python3 _source/pages.py     # regenerates all 16 pages plus the two 404s
+python3 _source/pages.py     # regenerates all 18 pages plus the two 404s
 ```
 
 | File | What it holds |
@@ -48,6 +48,50 @@ price, edit `menu_data.py` and rebuild: it updates the menu page, the JSON-LD `M
 The animated map on the home and Regala Tacos pages is real Mercator geography, projected
 offline from the `world-atlas` dataset. To regenerate it, see `_source/map.json`.
 
+## The 31 July review with Erika Silva, applied
+
+Erika walked the whole site page by page on 31 July 2026. Transcript:
+"Meeting started 2026/07/31 15:22 CST" in Drive. What changed, and why:
+
+- **Hero** now opens with the brand's own Concepto lockup, verbatim from their artwork:
+  "Somos tres… ¡Somos hermanos! / Junto a ti… ¡Somos invencibles! / Y lo mejor de todo es;
+  que sin habernos conocido… ¡Ya somos hermanos!" She asked for this to be the first thing
+  anyone sees. The H1 sits under it and carries the search intent.
+- **Header** uses the real isotipo plus the real vector wordmark. The drawn text is gone.
+- **Colour**: far less orange. "Nosotros no ocupamos mucho el naranja, ocupamos más el verde
+  y las tonalidades de verde." Orange now appears only on primary CTA buttons and on the
+  final "¡Ya somos hermanos!" line, which is orange in their own artwork.
+- **The orange marquee under the hero is deleted.** She agreed three times.
+- **"Tres cosas que no negociamos" is gone**, replaced with the positive framing she dictated:
+  big "Un producto espectacular / Un servicio memorable / El mejor valor por su dinero",
+  small supporting line under each.
+- **No personal byline.** The golden-rule quote is credited to Tacos Hermanos, not to
+  Alfonso. There are three brothers, not one figurehead.
+- **The efecto mariposa moved to the Fundación page**, where it belongs.
+- **Info is now Sucursales**, with a card per branch: photo, opening video, and that
+  branch's own hours.
+- **Cultura and Valores** are on Nuestra Historia, verbatim from their brand artwork.
+- **/empleados** is the unlisted internal page (noindex, robots-disallowed, out of the
+  sitemap, not in the nav) holding cultura, visión and valores.
+- **Fundación** is now real: Somos Hermanos, the 1 Juan 4:21 verse, +300 baskets every
+  Sunday, +5 years in Sonsonate, the three donation steps and the Escuela Bíblica Dominical
+  partnership. That section uses the foundation's own blue, not restaurant green.
+- **Brand icons** from the brand book (salsa bottle, taco, arch, tostada) now decorate the
+  pillars and section rules, instead of anything invented.
+- **Social share image** is brand-book page 1, as requested.
+
+Still open from that call: dish stories stay out; the "Brothers" sister brand is parked
+pending Pocho; an Instagram video feed page was discussed but not built.
+
+## Videos
+
+Four are live, all self-hosted, all well under the 20 MB ceiling Nelson set on the call:
+apertura San Miguel, apertura Santa Ana, apertura Usulután and sucursal La Gran Vía.
+Nothing autoloads. Each card shows a poster and only fetches the MP4 on click, which is
+the behaviour Erika saw demonstrated. San Benito and Paseo Venecia have no video yet.
+Re-encode new ones with: `ffmpeg -i in.mov -vf scale=720:-2 -c:v libx264 -crf 27 -maxrate
+2200k -movflags +faststart -c:a aac -b:a 96k out.mp4`.
+
 ## What is real and what is pending
 
 Everything on the site marked with the amber `.pendiente` style is **not final copy**. It is
@@ -56,14 +100,21 @@ launch, that class must be gone (or every instance filled) before the site goes 
 
 Still needed from the client:
 
-1. Exact opening hours per location, and whether breakfast has its own hours
-2. Exact addresses or Google Maps links per location
-3. Contact phone numbers, and the business-inquiries email
-4. The foundation: name, what it does, who it has helped, how to support it
-5. The founding story: the first weeks, the early challenges, what has not changed since day one
-6. Confirmation of the webfont licence for Causten
-7. The two reference websites they liked
-8. Registrar access for tacoshermanos.com
+1. Exact addresses or Google Maps links per location, and phone numbers per branch
+2. The business-inquiries email
+3. The founding story: the first weeks, the early challenges, what has not changed since day one
+4. The service protocol and welcome protocol, for /empleados (Erika is updating them)
+5. The price and contents of a Somos Hermanos aid basket
+6. Videos for San Benito and Paseo Venecia
+7. Erika's note saying which of the "famous" videos goes where on the site
+8. The menu Illustrator files (on her external drive)
+9. Foundation photos from her old phone, the foundation video, and the two story threads
+10. Confirmation of the webfont licence for Causten
+11. Registrar access for tacoshermanos.com
+12. La Gran Vía hours change once breakfast launches
+
+Already received and applied: per-branch hours, cultura y valores, the concept line, the
+foundation stand artwork, the brand icons, the text logo, and the first batch of videos.
 
 ## Decisions already made, do not relitigate
 
