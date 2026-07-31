@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tacoshermanos.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/nuestra-historia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/nuestra-historia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/our-story.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/nuestra-historia.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/our-story.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/nuestra-historia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/our-story.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/nuestra-historia.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/menu.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/menu.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/menu-desayunos.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu-desayunos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu-breakfast.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu-desayunos.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/menu-breakfast.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu-desayunos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu-breakfast.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu-desayunos.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/menu-almuerzo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu-almuerzo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu-lunch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu-almuerzo.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/menu-lunch.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/menu-almuerzo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/menu-lunch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/menu-almuerzo.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/info.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/info.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/fundacion.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/fundacion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/foundation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/fundacion.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/foundation.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/fundacion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/foundation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/fundacion.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/regala-tacos.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/regala-tacos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/gift-tacos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/regala-tacos.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/en/gift-tacos.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tacoshermanos.com/regala-tacos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tacoshermanos.com/en/gift-tacos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tacoshermanos.com/regala-tacos.html"/>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/llms.txt</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tacoshermanos.com/llms-full.txt</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

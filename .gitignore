@@ -1,0 +1,4 @@
+# Raw extracted originals. Large, and recoverable from the client's source PDFs.
+_source/photos-original/
+.DS_Store
+Thumbs.db
