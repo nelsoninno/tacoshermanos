@@ -20,11 +20,13 @@ def home(lang):
   <div class="hero__media">{img(lang,'assets/images/hero/hero-tacos-hermanos-'+DOMAIN+'.webp',
        L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"), priority=True)}</div>
   <div class="wrap hero__inner">
-    <span class="eyebrow">{L(lang,"El Salvador · Desde 2021","El Salvador · Since 2021")}</span>
+    <h1 class="hero__kicker">{L(lang,
+      "Tacos Hermanos, taquería del sabor en El Salvador desde 2021",
+      "Tacos Hermanos, the taquería of flavour in El Salvador since 2021")}</h1>
     {concepto(lang)}
-    <h1 class="hero__h1">{L(lang,
+    <p class="hero__h1">{L(lang,
       "Tacos, desayunos y celebraciones en familia, en seis casas de El Salvador.",
-      "Tacos, breakfast and family celebrations, in six houses across El Salvador.")}</h1>
+      "Tacos, breakfast and family celebrations, in six houses across El Salvador.")}</p>
     <div class="hero__quick">
       <a class="is-primary" href="{b('menu')}">{L(lang,"Ver el menú","See the menu")}</a>
       <a href="{b('info')}#horarios">{L(lang,"Horarios","Hours")}</a>
@@ -62,13 +64,14 @@ def home(lang):
 
     # --- pilares (positive framing, Erika's own wording, 31 July call)
     P = [("Un producto espectacular","A spectacular product",
-          "Nuestro menú está en constante evolución.","Our menu is always evolving.","taco"),
+          "Nuestro menú está en constante evolución, para sorprender a las familias salvadoreñas.",
+          "Our menu is always evolving, to keep surprising Salvadoran families.","taco"),
          ("Un servicio memorable","Memorable service",
-          "Cada persona que entra vive una experiencia extraordinaria.",
-          "Everyone who walks in lives an extraordinary experience.","arco"),
+          "Cada persona que entra por nuestras puertas vive una experiencia extraordinaria. Es lo que medimos todos los días, en cada una de las casas.",
+          "Everyone who walks through our doors lives an extraordinary experience. It is what we measure every day, in every house.","arco"),
          ("El mejor valor por su dinero","The best value for your money",
-          "Que toda la familia coma bien y salga feliz.",
-          "The whole family eats well and leaves happy.","tostada")]
+          "Que una familia entera coma bien, se sienta vista y salga diciendo que valió cada centavo.",
+          "A whole family eats well, feels seen, and leaves saying it was worth every cent.","tostada")]
     cards = "".join(
       f'<div class="pillar reveal" data-delay="{i}">{icono(lang, ic)}'
       f'<h3 class="mt-1">{L(lang,t_es,t_en)}</h3><p>{L(lang,d_es,d_en)}</p></div>'
@@ -343,25 +346,17 @@ def desayunos(lang):
 
     incluye = L(lang, DESAYUNOS_INCLUYE_ES, DESAYUNOS_INCLUYE_EN)
     out.append(f"""<section class="section">
-  <div class="wrap narrow">
+  <div class="wrap">
     {menu_nav(lang,"desayunos")}
     <div class="menu-includes reveal"><strong>{L(lang,"Todos nuestros desayunos incluyen:","Every breakfast includes:")}</strong> {incluye}</div>
-    {dish_photos(lang, [("super-tipico-hermano", L(lang,"Súper Típico Hermano","Súper Típico Hermano")),
-                        ("huevos-rotos", L(lang,"Huevos Rotos","Huevos Rotos")),
-                        ("omelette-asado", L(lang,"Omelette Asado","Omelette Asado")),
-                        ("tostadas-a-la-francesa", L(lang,"Tostadas a la Francesa","Tostadas a la Francesa"))])}
-    <div class="menu-group mt-4">
+    <div class="menu-group menu-group--wide">
       <div class="menu-group__head"><h2>{L(lang,"Desayunos","Breakfast")}</h2>
         <span class="menu-group__note">{L(lang,"Servidos por la mañana","Served in the morning")}</span></div>
-      {dish_rows(lang, DESAYUNOS)}
+      {menu_blocks(lang, DESAYUNOS_BLOQUES)}
     </div>
-    <div class="menu-group">
+    <div class="menu-group menu-group--wide">
       <div class="menu-group__head"><h2>{L(lang,"Batidos y cremosos","Shakes and cremosos")}</h2></div>
-      {dish_photos(lang, [("batido-de-cafe", L(lang,"Batido de Café","Coffee Shake")),
-                          ("batidos-y-cremosos", L(lang,"Cremosos","Cremosos")),
-                          ("desayuno-completo", L(lang,"El desayuno completo","The full breakfast")),
-                          ("desayunos-hermanos", L(lang,"Con horchata","With horchata"))])}
-      <div class="mt-3">{drink_list(lang, DESAYUNO_ESPECIALES)}</div>
+      {menu_blocks(lang, DESAYUNO_BEBIDAS_BLOQUES)}
     </div>
     <div class="menu-group">
       <div class="menu-group__head"><h2>{L(lang,"Bebidas","Drinks")}</h2></div>
@@ -389,33 +384,37 @@ def almuerzo(lang):
         L(lang,"Tacos parrilleros, al trompo y gobernador en tabla de madera","Parrilleros, trompo and gobernador tacos on a wooden board"),
         L(lang,"Menú","Menu"),
         L(lang,"Almuerzo y cena","Lunch and dinner"),
-        L(lang,"Nuestros tacos los servimos de 4 en 4, y los podés combinar de 2 en 2.",
+        L(lang,"Nuestros tacos los servimos de 4 en 4, y los puedes combinar de 2 en 2.",
                 "Our tacos are served four at a time, and you can mix them two and two."),
         [f'<a class="btn btn--primary" href="{href(lang,"desayunos")}">{L(lang,"Ver desayunos","See breakfast")}</a>'])]
 
     body = [menu_nav(lang, "almuerzo")]
     for sec in ALMUERZO:
-        note = sec.get(f"note_{lang}") or sec.get("note_es" if lang=="es" else "note_en")
+        note = sec.get(f"note_{lang}")
         note_html = f'<div class="menu-includes reveal">{note}</div>' if note else ""
-        photos = dish_photos(lang, [(s, c) for s, c in sec["photos"]]) if sec.get("photos") else ""
-        body.append(f"""<div class="menu-group">
+        body.append(f"""<div class="menu-group menu-group--wide">
       <div class="menu-group__head"><h2>{L(lang, sec['es'], sec['en'])}</h2></div>
       {note_html}
-      {photos}
-      <div class="mt-3">{dish_rows(lang, sec['items'])}</div>
+      {menu_blocks(lang, sec['blocks'])}
     </div>""")
-    body.append(f"""<div class="menu-group">
+
+    body.append(f"""<div class="menu-group menu-group--wide">
       <div class="menu-group__head"><h2>{L(lang,"Margaritas","Margaritas")}</h2>
         <span class="menu-group__note">{L(lang,"Estas llegan al alma","These ones reach the soul")}</span></div>
-      {drink_list(lang, MARGARITAS)}
-    </div>
-    <div class="menu-group">
-      <div class="menu-group__head"><h2>{L(lang,"Frozens","Frozens")}</h2></div>
-      {drink_list(lang, FROZENS)}
+      {menu_block(lang, {"photo":FOTO_MARGARITAS,
+                         "cap_es":"Tradicional, Maracuyá y Fresa","cap_en":"Tradicional, Maracuyá and Fresa",
+                         "drinks":MARGARITAS, "items":[]})}
     </div>
     <div class="menu-group">
       <div class="menu-group__head"><h2>{L(lang,"Cervezas","Beers")}</h2></div>
       {drink_list(lang, CERVEZAS)}
+    </div>
+    <div class="menu-group menu-group--wide">
+      <div class="menu-group__head"><h2>{L(lang,"Frozens","Frozens")}</h2></div>
+      {menu_block(lang, {"photo":FOTO_FROZENS,
+                         "cap_es":"Arrayanada, Mango Sazón, Carretón, Chocobanano y Maracuyá",
+                         "cap_en":"Arrayanada, Mango Sazón, Carretón, Chocobanano and Maracuyá",
+                         "drinks":FROZENS, "items":[]})}
     </div>
     <div class="menu-group">
       <div class="menu-group__head"><h2>{L(lang,"Bebidas","Drinks")}</h2></div>
@@ -425,11 +424,17 @@ def almuerzo(lang):
       "Precios en dólares estadounidenses, tomados del menú impreso de Tacos Hermanos.",
       "Prices in US dollars, taken from the printed Tacos Hermanos menu.")}</p>""")
 
-    out.append('<section class="section"><div class="wrap narrow">' + "\n".join(body) + "</div></section>")
+    out.append('<section class="section"><div class="wrap">' + "\n".join(body) + "</div></section>")
+    out.append(f"""<section class="section section--tight band-cream">
+  <div class="wrap center reveal">
+    {img(lang, photo(FOTO_LIFESTYLE), L(lang,"Brindis con Coca-Cola sobre una mesa llena en Tacos Hermanos",
+                                             "A Coca-Cola toast over a full table at Tacos Hermanos"))}
+  </div>
+</section>""")
     out.append(cta_band(L(lang,"Vení con toda la familia","Bring the whole family"),
       L(lang,"Seis casas en El Salvador. Sin reservaciones, por orden de llegada.",
              "Six houses across El Salvador. No reservations, first come first served."),
-      [f'<a class="btn btn--sun" href="{href(lang,"info")}">{L(lang,"Ver ubicaciones","See locations")}</a>']))
+      [f'<a class="btn btn--sun" href="{href(lang,"info")}">{L(lang,"Ver sucursales","See locations")}</a>']))
     return "\n".join(out)
 
 # =========================================================================
@@ -483,7 +488,8 @@ def fundacion(lang):
                 "The world is a better place when we treat each other like family"),
         L(lang,"Nuestra fundación nace hace cinco años con una firme creencia.",
                 "Our foundation was born five years ago out of one firm belief."),
-        [f'<a class="btn btn--primary" href="#como-ayudar">{L(lang,"Cómo ser parte","How to take part")}</a>'])]
+        [f'<a class="btn btn--primary" href="#como-ayudar">{L(lang,"Cómo ser parte","How to take part")}</a>'],
+        variant="hero--somos")]
 
     out.append(f"""<section class="section band-somos">
   <div class="wrap narrow center">
@@ -556,10 +562,17 @@ def fundacion(lang):
   </div>
 </section>""")
 
-    out.append(cta_band(L(lang,"¿Querés saber más?","Want to know more?"),
-      L(lang,"Estamos construyendo el sitio propio de Somos Hermanos. Mientras tanto, escribinos.",
-             "We are building the Somos Hermanos site of its own. In the meantime, write to us."),
-      [f'<a class="btn btn--sun" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>']))
+    out.append(f"""<section class="section section--tight cta-band cta-band--somos">
+  <div class="wrap narrow reveal">
+    <h2>{L(lang,"¿Querés saber más?","Want to know more?")}</h2>
+    <p class="mt-1">{L(lang,
+      "Estamos construyendo el sitio propio de Somos Hermanos. Mientras tanto, escribinos.",
+      "We are building the Somos Hermanos site of its own. In the meantime, write to us.")}</p>
+    <div class="hero__cta mt-3" style="justify-content:center">
+      <a class="btn btn--sun" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>""")
     return "\n".join(out)
 
 # =========================================================================

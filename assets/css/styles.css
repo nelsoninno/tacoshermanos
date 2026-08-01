@@ -589,3 +589,60 @@ p+p{margin-top:1em}
 /* the eyebrow sits on green in heroes and dark bands, so it needs to lift */
 .hero .eyebrow{color:var(--durazno)}
 .band-somos .cifra__t{color:color-mix(in srgb,#FFFFFF 88%,transparent)}
+
+
+/* ---------- menu block: photo on top, its dishes directly below -------- */
+.menu-block{margin-bottom:clamp(2.2rem,1.6rem + 2.5vw,4rem)}
+.menu-block__figure{margin:0 0 1.1rem;border-radius:20px;overflow:hidden;
+  background:var(--surface);position:relative}
+.menu-block__img{width:100%;height:auto;display:block;aspect-ratio:5/6;object-fit:cover;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.menu-block__figure:hover .menu-block__img{transform:scale(1.02)}
+.menu-block__figure figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.2rem 1rem;
+  font-family:var(--font-display);font-weight:800;color:var(--crema);
+  font-size:clamp(1rem,.92rem + .4vw,1.25rem);
+  background:linear-gradient(transparent,color-mix(in srgb,var(--verde-hondo) 92%,transparent));
+}
+.menu-block__items .dish:first-child{padding-top:0}
+/* Erika asked for the photo on top and the dishes directly underneath it, so the
+   block always stacks. On wider screens the blocks sit two per row so the page
+   does not run forever. */
+.menu-blocks{display:grid;gap:clamp(1.8rem,1.2rem + 2.5vw,3.4rem)}
+@media (min-width:820px){
+  .menu-blocks{grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:clamp(2rem,1.4rem + 2vw,3.6rem) clamp(1.6rem,1rem + 2.5vw,3rem)}
+}
+.menu-block{margin-bottom:0;display:flex;flex-direction:column}
+.menu-block__img{aspect-ratio:4/5}
+
+/* ---------- pillars: icons need their brand-green disc back ----------- */
+.pillar .icono{
+  width:clamp(56px,6vw,74px);height:auto;padding:.7rem;border-radius:999px;
+  background:var(--verde);box-shadow:0 6px 18px color-mix(in srgb,var(--verde) 24%,transparent);
+}
+.icon-rule .icono{padding:.55rem;border-radius:999px;background:var(--verde)}
+.band-dark .icon-rule .icono{background:color-mix(in srgb,var(--crema) 16%,transparent)}
+
+/* the H1 is the small line above the statement, white, per the client */
+.hero__kicker{
+  font-family:var(--font-body);font-weight:600;letter-spacing:.02em;
+  font-size:clamp(.86rem,.82rem + .25vw,1rem);line-height:1.4;
+  color:#FFFFFF;margin-bottom:1rem;max-width:46ch;
+}
+.hero--concepto .concepto__shout{font-size:clamp(2.3rem,1.3rem + 4.6vw,5rem)}
+.hero--concepto .concepto__line{font-size:clamp(1.15rem,1rem + .9vw,1.9rem)}
+
+/* the foundation page runs on Somos Hermanos blue, header and footer stay green */
+.hero--somos{background:var(--azul-sh-hondo)}
+.hero--somos::after{
+  background:linear-gradient(180deg,
+    color-mix(in srgb,var(--azul-sh-hondo) 66%,transparent) 0%,
+    color-mix(in srgb,var(--azul-sh) 42%,transparent) 40%,
+    color-mix(in srgb,var(--azul-sh-hondo) 95%,transparent) 100%);
+}
+.hero--somos .eyebrow{color:var(--azul-sh-crema)}
+.hero--somos .concepto__shout,.hero--somos h1{color:#FFFFFF}
+.cta-band--somos{background:var(--azul-sh);color:#FFFFFF}
+.cta-band--somos p{color:color-mix(in srgb,#FFFFFF 90%,transparent)}
+.cta-band--somos .btn--sun{background:var(--azul-sh-crema);color:var(--azul-sh-hondo)}

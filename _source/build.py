@@ -191,12 +191,12 @@ def graph_jsonld(lang, with_menu=False):
     menu = {"@type":"Menu","@id":f"{BASE}/#menu","name":"Menú Tacos Hermanos",
             "inLanguage":"es","url":url_of("menu","es"),
             "hasMenuSection":[
-              {"@type":"MenuSection","name":s["es"],
+              {"@type":"MenuSection","name":sec["es"],
                "hasMenuItem":[{"@type":"MenuItem","name":i["n"],
                                "description":i["es"],
                                **({"offers":{"@type":"Offer","price":i["p"],"priceCurrency":"USD"}} if i["p"] else {})}
-                              for i in s["items"]]}
-              for s in ALMUERZO] +
+                              for blk in sec["blocks"] for i in blk["items"]]}
+              for sec in ALMUERZO] +
               [{"@type":"MenuSection","name":"Desayunos",
                 "hasMenuItem":[{"@type":"MenuItem","name":d["n"],"description":d["es"],
                                 "offers":{"@type":"Offer","price":d["p"],"priceCurrency":"USD"}}
@@ -369,9 +369,9 @@ def footer(lang, current):
 # --------------------------------------------------------------------------
 # reusable sections
 # --------------------------------------------------------------------------
-def hero(lang, image, alt, eyebrow, h1, sub, ctas, aria=None):
+def hero(lang, image, alt, eyebrow, h1, sub, ctas, aria=None, variant=""):
     lbl = f' aria-label="{aria}"' if aria else ""
-    return f"""<section class="hero">
+    return f"""<section class="hero {variant}">
   <div class="hero__media">{img(lang,'assets/images/hero/'+image, alt, priority=True)}</div>
   <div class="wrap hero__inner">
     <span class="eyebrow">{eyebrow}</span>
@@ -411,6 +411,25 @@ def dish_photos(lang, pairs):
         f'<figure class="dish-photo reveal">{img(lang, photo(slug), cap + ", Tacos Hermanos")}'
         f'<figcaption>{cap}</figcaption></figure>' for slug, cap in pairs)
     return f'<div class="dish-photos">{figs}</div>'
+
+def menu_block(lang, blk):
+    """One photograph followed immediately by the dishes it actually shows.
+    This is the layout agreed with Erika: no cutting dishes out of shared photos."""
+    cap = blk.get(f"cap_{lang}") or ""
+    names = ", ".join(i["n"] for i in blk.get("items", []))
+    alt = (f"{names} de Tacos Hermanos" if lang == "es" else f"{names} at Tacos Hermanos")
+    pic = img(lang, photo(blk["photo"]), alt, cls_="menu-block__img")
+    if "drinks" in blk:
+        body = drink_list(lang, blk["drinks"])
+    else:
+        body = dish_rows(lang, blk["items"])
+    return f"""<div class="menu-block reveal">
+      <figure class="menu-block__figure">{pic}<figcaption>{cap}</figcaption></figure>
+      <div class="menu-block__items">{body}</div>
+    </div>"""
+
+def menu_blocks(lang, blocks):
+    return f'<div class="menu-blocks">{"".join(menu_block(lang, b) for b in blocks)}</div>' 
 
 def dish_rows(lang, items):
     out = []
@@ -503,19 +522,14 @@ def icon_rule(lang, name="arco"):
     return f'<div class="icon-rule">{icono(lang,name)}</div>'
 
 def concepto(lang):
-    """The brand's official Concepto lockup, verbatim from their artwork.
-    Erika asked for this to be the first thing anyone sees."""
+    """The one phrase Erika asked to be the first thing anyone sees:
+    "sin habernos conocido... ya somos hermanos". It is their Instagram and
+    Facebook bio line, and the closing line of their own Concepto artwork.
+    The full three-part Concepto lives on Nuestra Historia, not here."""
     es = lang == "es"
-    l1 = "Somos tres…" if es else "There are three of us…"
-    l2 = "Junto a ti…" if es else "Together with you…"
-    l3 = ("Y lo mejor de todo es; que sin habernos conocido…" if es
-          else "And the best part is, without ever having met…")
+    l1 = "Sin habernos conocido…" if es else "Without ever having met…"
     return f"""<div class="concepto">
       <span class="concepto__line">{l1}</span>
-      <span class="concepto__shout">¡Somos hermanos!</span>
-      <span class="concepto__line">{l2}</span>
-      <span class="concepto__shout">¡Somos invencibles!</span>
-      <span class="concepto__line">{l3}</span>
       <span class="concepto__shout concepto__shout--final">¡Ya somos hermanos!</span>
     </div>"""
 
