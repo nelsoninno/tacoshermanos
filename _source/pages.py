@@ -21,12 +21,12 @@ def home(lang):
        L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"), priority=True)}</div>
   <div class="wrap hero__inner">
     <h1 class="hero__kicker">{L(lang,
-      "Tacos Hermanos, taquería y restaurante en El Salvador, seis sucursales",
-      "Tacos Hermanos, taquería and restaurant in El Salvador, six locations")}</h1>
+      "Tacos Hermanos, taquería y restaurante mexicano en El Salvador",
+      "Tacos Hermanos, Mexican taquería and restaurant in El Salvador")}</h1>
     {concepto(lang)}
     <p class="hero__h1">{L(lang,
-      "Tacos, desayunos y celebraciones en familia, en seis casas de El Salvador.",
-      "Tacos, breakfast and family celebrations, in six houses across El Salvador.")}</p>
+      "Tacos, desayunos y celebraciones en familia, en seis sucursales.",
+      "Tacos, breakfast and family celebrations, across six locations.")}</p>
     <div class="hero__quick">
       <a class="is-primary" href="{b('menu')}">{L(lang,"Ver el menú","See the menu")}</a>
       <a href="{b('info')}">{L(lang,"Sucursales y horarios","Locations and hours")}</a>

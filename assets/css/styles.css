@@ -506,7 +506,7 @@ p+p{margin-top:1em}
 .hero--concepto .hero__inner{max-width:980px}
 .hero__h1{
   font-size:clamp(1.05rem,.95rem + .6vw,1.45rem);font-weight:600;letter-spacing:0;
-  line-height:1.35;max-width:44ch;
+  line-height:1.35;max-width:none;text-wrap:balance;
   color:color-mix(in srgb,var(--crema) 90%,transparent);
   font-family:var(--font-body);
 }
@@ -628,7 +628,7 @@ p+p{margin-top:1em}
 .hero__kicker{
   font-family:var(--font-body);font-weight:600;letter-spacing:.02em;
   font-size:clamp(.86rem,.82rem + .25vw,1rem);line-height:1.4;
-  color:#FFFFFF;margin-bottom:1rem;max-width:46ch;
+  color:#FFFFFF;margin-bottom:1rem;max-width:none;
 }
 .hero--concepto .concepto__shout{font-size:clamp(2.3rem,1.3rem + 4.6vw,5rem)}
 .hero--concepto .concepto__line{font-size:clamp(1.15rem,1rem + .9vw,1.9rem)}
