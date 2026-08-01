@@ -103,6 +103,10 @@ pending Pocho; an Instagram video feed page was discussed but not built.
   encontrar aquí" section, as a green band under the three pillars, titled "La regla de oro
   en Tacos Hermanos". Without a personal byline the quote had nothing to anchor it where it
   was. "La esencia" keeps the essay and the photo.
+- Each of the six rows in the home page's "Nuestras casas" list links straight to that
+  branch's card on Sucursales, using a slug from `casa_id()` in `build.py`. The jump is
+  deliberately instant, not smooth: `html{scroll-behavior:smooth}` was animating the
+  cross-page landing for over a second and leaving the last cards below the fold.
 
 ## Videos
 
