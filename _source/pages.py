@@ -19,10 +19,12 @@ def home(lang):
     out = [f"""<section class="hero hero--concepto">
   <div class="hero__media">{img(lang,'assets/images/hero/hero-tacos-hermanos-'+DOMAIN+'.webp',
        L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"), priority=True)}</div>
-  <div class="wrap hero__inner">
+  <div class="wrap hero__top">
     <h1 class="hero__kicker">{L(lang,
       "Tacos Hermanos, taquería y restaurante mexicano en El Salvador",
       "Tacos Hermanos, Mexican taquería and restaurant in El Salvador")}</h1>
+  </div>
+  <div class="wrap hero__inner">
     {concepto(lang)}
     <p class="hero__h1">{L(lang,
       "Tacos, desayunos y celebraciones en familia, en seis sucursales.",
