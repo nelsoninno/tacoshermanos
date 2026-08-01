@@ -183,6 +183,9 @@ def graph_jsonld(lang, with_menu=False):
         "openingHoursSpecification":hours,
         "acceptsReservations":"False",
         "sameAs":["https://www.instagram.com/tacoshermanossv"],
+        "funder":{"@type":"NGO","name":"Somos Hermanos","foundingDate":"2021",
+                  "url":"https://somoshermanos.ong",
+                  "sameAs":["https://www.instagram.com/somoshermanossv"]},
         "hasMenu":{"@id":f"{BASE}/#menu"},
     }
     website = {"@type":"WebSite","@id":f"{BASE}/#website","url":BASE+"/",
@@ -428,6 +431,10 @@ def menu_block(lang, blk):
       <div class="menu-block__items">{body}</div>
     </div>"""
 
+def menu_blocks_pair(lang, blocks):
+    """Two photo blocks side by side, kept side by side on desktop."""
+    return f'<div class="menu-blocks menu-blocks--pair">{"".join(menu_block(lang, b) for b in blocks)}</div>'
+
 def menu_blocks(lang, blocks):
     return f'<div class="menu-blocks">{"".join(menu_block(lang, b) for b in blocks)}</div>' 
 
@@ -439,7 +446,11 @@ def dish_rows(lang, items):
         hint = i.get(f"hint_{lang}", "")
         h = f'<span class="dish__hint">{hint}</span>' if hint else ""
         d = f'<p class="dish__desc">{desc}{h}</p>' if (desc or hint) else ""
-        out.append(f'<div class="dish reveal"><span class="dish__name">{i["n"]}</span>{price}{d}</div>')
+        gloss = i.get("gloss")
+        name = i["n"]
+        if lang == "en" and gloss:
+            name += f'<span class="dish__gloss">{gloss}</span>'
+        out.append(f'<div class="dish reveal"><span class="dish__name">{name}</span>{price}{d}</div>')
     return "".join(out)
 
 def drink_list(lang, rows):
@@ -479,14 +490,14 @@ def taco(extra=""):
         <circle cx="5" cy="0" r="2.1" class="mapa__taco-fill"/>
       </g>"""
 
-def mapa(lang):
+def mapa(lang, xl=False):
     """Real Mercator geography of North and Central America, projected offline from
     the world-atlas dataset. El Salvador is highlighted; a voucher flies the arc."""
     es = lang == "es"
     aria = ("Mapa animado: un voucher de Tacos Hermanos viaja desde Estados Unidos hasta El Salvador"
             if es else "Animated map: a Tacos Hermanos voucher travels from the United States to El Salvador")
     lands = "\n    ".join(MAP["paths"])
-    return f"""<div class="mapa reveal">
+    return f"""<div class="mapa reveal{' mapa--xl' if xl else ''}">
   <svg viewBox="0 0 {MAP['w']} {MAP['h']}" role="img" aria-label="{aria}">
     {lands}
     <path d="{ARC}" class="mapa__arc"/>
@@ -530,7 +541,7 @@ def concepto(lang):
     l1 = "Sin habernos conocido…" if es else "Without ever having met…"
     return f"""<div class="concepto">
       <span class="concepto__line">{l1}</span>
-      <span class="concepto__shout concepto__shout--final">¡Ya somos hermanos!</span>
+      <span class="concepto__shout">¡Ya somos hermanos!</span>
     </div>"""
 
 PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>')

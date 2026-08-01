@@ -83,6 +83,23 @@ Erika walked the whole site page by page on 31 July 2026. Transcript:
 Still open from that call: dish stories stay out; the "Brothers" sister brand is parked
 pending Pocho; an Instagram video feed page was discussed but not built.
 
+## The 1 August review, applied
+
+- Hero: "¡Ya somos hermanos!" is cream, not orange. The lead-in is about half its size.
+  The H1 is the small white line: "Tacos Hermanos, taquería y restaurante en El Salvador,
+  seis sucursales". Hero buttons trimmed to two, since Horarios and Sucursales land in the
+  same place and Regala Tacos is already in the nav.
+- The full three-part Concepto is now a visible block on Nuestra Historia, on green, with
+  "Unidad · Colaboración · Solidaridad" under it.
+- All negative framing removed from brand copy. Nothing is phrased as "we were not…".
+- The five values are centred cards on brand green.
+- Menu: margaritas and frozens sit side by side with portrait photos; beers and drinks stay
+  plain lists. Every dish now carries an English `gloss` shown under the Spanish name on
+  /en/ only.
+- The animated map in the home teaser is 40% wider.
+- Somos Hermanos links to somoshermanos.ong and @somoshermanossv, and is declared as an
+  NGO funder in the schema graph.
+
 ## Videos
 
 Four are live, all self-hosted, all well under the 20 MB ceiling Nelson set on the call:

@@ -646,3 +646,44 @@ p+p{margin-top:1em}
 .cta-band--somos{background:var(--azul-sh);color:#FFFFFF}
 .cta-band--somos p{color:color-mix(in srgb,#FFFFFF 90%,transparent)}
 .cta-band--somos .btn--sun{background:var(--azul-sh-crema);color:var(--azul-sh-hondo)}
+
+
+/* ---------- English gloss beside the Spanish dish name ---------------- */
+.dish__gloss{
+  display:block;font-family:var(--font-body);font-weight:500;
+  font-size:.82rem;letter-spacing:.01em;color:var(--muted);
+  text-transform:none;margin-top:.15rem;
+}
+
+/* ---------- hero proportions asked for by the client ------------------ */
+.hero--concepto .concepto__shout{color:var(--crema)}
+.hero--concepto .concepto__line{
+  font-size:clamp(1.15rem,.7rem + 2.3vw,2.5rem);   /* about half the shout */
+  color:color-mix(in srgb,var(--crema) 92%,transparent);
+  font-weight:600;
+}
+.hero--concepto .concepto{gap:.3rem}
+
+/* ---------- bigger animated map in the home teaser -------------------- */
+.mapa--xl{width:min(100%,calc(100% + 0px))}
+@media (min-width:900px){
+  .split .mapa--xl{width:140%;max-width:none;margin-left:-20%}
+}
+
+/* ---------- values cards: centred, on brand green --------------------- */
+.card--valor{
+  background:var(--verde);border-color:var(--verde);text-align:center;
+  display:flex;align-items:center;justify-content:center;min-height:120px;
+}
+.card--valor h3{color:var(--crema);margin:0}
+.card--valor:hover{background:var(--verde-hondo);border-color:var(--verde-hondo)}
+
+/* margaritas and frozens keep two columns, portrait photos */
+.menu-blocks--pair{grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(1rem,.7rem + 1.6vw,2.4rem)}
+.menu-blocks--pair .menu-block__img{aspect-ratio:3/4}
+
+.grid--valores{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.concepto--centro{align-items:center;text-align:center;gap:.25rem}
+.concepto--centro .concepto__shout{color:var(--crema);font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem)}
+.concepto--centro .concepto__line{font-size:clamp(1rem,.85rem + 1.1vw,1.6rem);color:color-mix(in srgb,var(--crema) 85%,transparent)}

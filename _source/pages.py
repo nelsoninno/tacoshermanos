@@ -21,17 +21,15 @@ def home(lang):
        L(lang,"Salón principal de Tacos Hermanos lleno de familias","The main Tacos Hermanos dining room full of families"), priority=True)}</div>
   <div class="wrap hero__inner">
     <h1 class="hero__kicker">{L(lang,
-      "Tacos Hermanos, taquería del sabor en El Salvador desde 2021",
-      "Tacos Hermanos, the taquería of flavour in El Salvador since 2021")}</h1>
+      "Tacos Hermanos, taquería y restaurante en El Salvador, seis sucursales",
+      "Tacos Hermanos, taquería and restaurant in El Salvador, six locations")}</h1>
     {concepto(lang)}
     <p class="hero__h1">{L(lang,
       "Tacos, desayunos y celebraciones en familia, en seis casas de El Salvador.",
       "Tacos, breakfast and family celebrations, in six houses across El Salvador.")}</p>
     <div class="hero__quick">
       <a class="is-primary" href="{b('menu')}">{L(lang,"Ver el menú","See the menu")}</a>
-      <a href="{b('info')}#horarios">{L(lang,"Horarios","Hours")}</a>
-      <a href="{b('info')}">{L(lang,"Sucursales","Locations")}</a>
-      <a href="{b('regala')}">{L(lang,"Enviar tacos","Send tacos")}</a>
+      <a href="{b('info')}">{L(lang,"Sucursales y horarios","Locations and hours")}</a>
     </div>
   </div>
 </section>"""]
@@ -141,7 +139,7 @@ def home(lang):
         <a class="btn btn--sun" href="{b('regala')}">{L(lang,"Ver cómo funciona","See how it works")}</a>
       </div>
     </div>
-    <div class="reveal" data-delay="1">{mapa(lang)}</div>
+    <div class="reveal" data-delay="1">{mapa(lang, xl=True)}</div>
   </div>
 </section>""")
 
@@ -158,9 +156,9 @@ def home(lang):
 FAQ = {
  "es": [
   ("¿Tacos Hermanos acepta reservaciones?",
-   "No, no manejamos reservaciones en ninguna de nuestras seis casas. Atendemos por orden de llegada. Lo hacemos así para que la mesa que se desocupa sea de quien ya está esperando, y no de quien llamó primero. En horas pico puede haber espera, y vale la pena."),
+   "Atendemos por orden de llegada en las seis casas, sin reservaciones. Lo hacemos así para que la mesa que se desocupa sea de quien ya está esperando, y no de quien llamó primero. En horas pico puede haber espera, y vale la pena."),
   ("¿Tacos Hermanos tiene delivery?",
-   "No hacemos delivery propio. La razón es simple: queremos estar seguros de que la comida llega a la mesa con nuestro estándar. Cuando un plato pasa a otras manos, se guarda en una caja y viaja por la calle, no podemos garantizar que llegue como salió de la cocina. Preferimos que la primera vez que lo pruebes sea como debe ser."),
+   "Servimos únicamente en nuestras casas. La razón es simple: queremos estar seguros de que la comida llega a la mesa con nuestro estándar. Cuando un plato pasa a otras manos, se guarda en una caja y viaja por la calle, no podemos garantizar que llegue como salió de la cocina. Preferimos que la primera vez que lo pruebes sea como debe ser."),
   ("¿Dónde están ubicados y a qué hora abren?",
    "Tenemos seis casas: San Benito, La Gran Vía, Paseo Venecia en Soyapango, Las Ramblas en Santa Ana, San Miguel y Plaza Mundo en Usulután. Los horarios exactos de cada sucursal están en la página de Sucursales."),
   ("¿Tacos Hermanos sirve desayunos?",
@@ -172,9 +170,9 @@ FAQ = {
  ],
  "en": [
   ("Does Tacos Hermanos take reservations?",
-   "No, we do not take reservations at any of our six houses. We seat guests in the order they arrive. We do it this way so that the next free table belongs to whoever is already waiting, not to whoever called first. At peak hours there can be a wait, and it is worth it."),
+   "We seat guests in the order they arrive, at all six houses, without reservations. We do it this way so that the next free table belongs to whoever is already waiting, not to whoever called first. At peak hours there can be a wait, and it is worth it."),
   ("Does Tacos Hermanos deliver?",
-   "We do not run our own delivery. The reason is simple: we want to be certain the food reaches the table at our standard. Once a plate passes to other hands, sits in a box and travels down the road, we cannot guarantee it arrives the way it left the kitchen. We would rather your first taste be the way it is meant to be."),
+   "We serve in our houses only. The reason is simple: we want to be certain the food reaches the table at our standard. Once a plate passes to other hands, sits in a box and travels down the road, we cannot guarantee it arrives the way it left the kitchen. We would rather your first taste be the way it is meant to be."),
   ("Where are you located and what are your hours?",
    "We have six houses: San Benito, La Gran Vía, Paseo Venecia in Soyapango, Las Ramblas in Santa Ana, San Miguel, and Plaza Mundo in Usulután. Exact hours for each location are on the Locations page."),
   ("Does Tacos Hermanos serve breakfast?",
@@ -193,28 +191,38 @@ def historia(lang):
     out = [hero(lang, f"hero-historia-tacos-hermanos-{DOMAIN}.webp",
         L(lang,"El equipo completo de Tacos Hermanos frente a una de sus casas","The full Tacos Hermanos team in front of one of their houses"),
         L(lang,"Nuestra historia","Our story"),
-        L(lang,"No éramos dos hermanos poniendo un negocio","We were not two brothers opening a business"),
-        L(lang,"Éramos hermanos que creían tanto en la filosofía de la hermandad que querían compartirla con el mundo.",
-                "We were brothers who believed so much in the philosophy of brotherhood that we wanted to share it with the world."),
+        L(lang,"Todo empezó con una filosofía: tratarnos como hermanos",
+                "It all started with one philosophy: treat each other like family"),
+        L(lang,"Creíamos tanto en la hermandad que quisimos compartirla con el mundo, y abrimos un restaurante para hacerlo.",
+                "We believed in brotherhood so much that we wanted to share it with the world, so we opened a restaurant to do it."),
         [f'<a class="btn btn--primary" href="{href(lang,"menu")}">{L(lang,"Ver el menú","See the menu")}</a>'])]
 
     out.append(f"""<section class="section">
   <div class="wrap narrow">
     <span class="eyebrow reveal">{L(lang,"El porqué del nombre","Where the name comes from")}</span>
-    <h2 class="reveal">{L(lang,"El nombre no vino del parentesco, vino del trato","The name did not come from blood, it came from how we treat people")}</h2>
+    <h2 class="reveal">{L(lang,"El nombre viene del trato","The name comes from how we treat people")}</h2>
     <p class="lead mt-2 reveal">{L(lang,
-      "Sí somos hermanos. Pero el nombre no salió por eso. Salió por el trato de hermanos y la filosofía de hermanos. Lo que para nosotros significaba la hermandad lo queríamos compartir con el mundo.",
-      "We are brothers, yes. But the name did not come from that. It came from treating people like family, and from the philosophy behind it. What brotherhood meant to us was something we wanted to share with the world.")}</p>
+      "Sí somos hermanos, y el nombre salió del trato de hermanos y de la filosofía de hermanos. Lo que para nosotros significaba la hermandad lo queríamos compartir con el mundo.",
+      "We are brothers, and the name came from treating people like family, and from the philosophy behind it. What brotherhood meant to us was something we wanted to share with the world.")}</p>
     <p class="mt-2 reveal">{L(lang,
       "Si logramos que la gente lo entienda, y que la gente se empiece a tratar un poquito más como hermanos, con un poquito más de empatía y un poquito más de cariño, grandes cosas pueden pasar.",
       "If we can get people to understand it, and get people to treat each other a little more like family, with a little more empathy and a little more care, big things can happen.")}</p>
+  </div>
+</section>""")
 
-    <blockquote class="quote mt-4 reveal">
-      <p>{L(lang,
-        "Somos tres, somos hermanos. Junto a ti, somos invencibles. Y lo mejor de todo es que, sin habernos conocido, ya somos hermanos.",
-        "There are three of us, and we are brothers. Together with you, we are unstoppable. And the best part is that, without ever having met, we are already brothers.")}</p>
-      <cite>Tacos Hermanos</cite>
-    </blockquote>
+    # the full Concepto, exactly as it appears in their own artwork
+    out.append(f"""<section class="section band-dark">
+  <div class="wrap narrow center">
+    <div class="concepto concepto--centro reveal">
+      <span class="concepto__line">{L(lang,"Somos tres…","There are three of us…")}</span>
+      <span class="concepto__shout">¡Somos hermanos!</span>
+      <span class="concepto__line">{L(lang,"Junto a ti…","Together with you…")}</span>
+      <span class="concepto__shout">¡Somos invencibles!</span>
+      <span class="concepto__line">{L(lang,"Y lo mejor de todo es; que sin habernos conocido…",
+                                            "And the best of all is that, without ever having met…")}</span>
+      <span class="concepto__shout">¡Ya somos hermanos!</span>
+    </div>
+    <p class="tagline mt-3 reveal">{L(lang,"Unidad · Colaboración · Solidaridad","Unity · Collaboration · Solidarity")}</p>
   </div>
 </section>""")
 
@@ -235,7 +243,7 @@ def historia(lang):
     # --- valores, the five words from their brand book
     VAL = [("Honestidad","Honesty"),("Hermandad","Brotherhood"),("Valentía","Courage"),
            ("Excelencia","Excellence"),("Alegría","Joy")]
-    vcards = "".join(f'<div class="card reveal" data-delay="{i%3}"><h3>{L(lang,a,b)}</h3></div>'
+    vcards = "".join(f'<div class="card card--valor reveal" data-delay="{i%3}"><h3>{L(lang,a,b)}</h3></div>'
                      for i,(a,b) in enumerate(VAL))
     out.append(f"""<section class="section">
   <div class="wrap">
@@ -243,7 +251,7 @@ def historia(lang):
       <span class="eyebrow">{L(lang,"Valores","Values")}</span>
       <h2>{L(lang,"Cinco palabras que se sostienen solas","Five words that stand on their own")}</h2>
     </div>
-    <div class="grid grid--3">{vcards}</div>
+    <div class="grid grid--valores">{vcards}</div>
   </div>
 </section>""")
 
@@ -398,23 +406,18 @@ def almuerzo(lang):
       {menu_blocks(lang, sec['blocks'])}
     </div>""")
 
-    body.append(f"""<div class="menu-group menu-group--wide">
-      <div class="menu-group__head"><h2>{L(lang,"Margaritas","Margaritas")}</h2>
+    body.append(f"""<div class="menu-group">
+      <div class="menu-group__head"><h2>{L(lang,"Margaritas y frozens","Margaritas and frozens")}</h2>
         <span class="menu-group__note">{L(lang,"Estas llegan al alma","These ones reach the soul")}</span></div>
-      {menu_block(lang, {"photo":FOTO_MARGARITAS,
-                         "cap_es":"Tradicional, Maracuyá y Fresa","cap_en":"Tradicional, Maracuyá and Fresa",
-                         "drinks":MARGARITAS, "items":[]})}
+      {menu_blocks_pair(lang, [
+        {"photo":FOTO_MARGARITAS,"cap_es":"Margaritas","cap_en":"Margaritas",
+         "drinks":MARGARITAS,"items":[]},
+        {"photo":FOTO_FROZENS,"cap_es":"Frozens","cap_en":"Frozens",
+         "drinks":FROZENS,"items":[]}])}
     </div>
     <div class="menu-group">
       <div class="menu-group__head"><h2>{L(lang,"Cervezas","Beers")}</h2></div>
       {drink_list(lang, CERVEZAS)}
-    </div>
-    <div class="menu-group menu-group--wide">
-      <div class="menu-group__head"><h2>{L(lang,"Frozens","Frozens")}</h2></div>
-      {menu_block(lang, {"photo":FOTO_FROZENS,
-                         "cap_es":"Arrayanada, Mango Sazón, Carretón, Chocobanano y Maracuyá",
-                         "cap_en":"Arrayanada, Mango Sazón, Carretón, Chocobanano and Maracuyá",
-                         "drinks":FROZENS, "items":[]})}
     </div>
     <div class="menu-group">
       <div class="menu-group__head"><h2>{L(lang,"Bebidas","Drinks")}</h2></div>
@@ -566,10 +569,11 @@ def fundacion(lang):
   <div class="wrap narrow reveal">
     <h2>{L(lang,"¿Querés saber más?","Want to know more?")}</h2>
     <p class="mt-1">{L(lang,
-      "Estamos construyendo el sitio propio de Somos Hermanos. Mientras tanto, escribinos.",
-      "We are building the Somos Hermanos site of its own. In the meantime, write to us.")}</p>
+      "Conocé a Somos Hermanos en su propio sitio y seguí su trabajo en Instagram.",
+      "Meet Somos Hermanos on its own site, and follow the work on Instagram.")}</p>
     <div class="hero__cta mt-3" style="justify-content:center">
-      <a class="btn btn--sun" href="https://www.instagram.com/tacoshermanossv" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn--sun" href="https://somoshermanos.ong" target="_blank" rel="noopener">somoshermanos.ong</a>
+      <a class="btn btn--ghost" href="https://www.instagram.com/somoshermanossv" target="_blank" rel="noopener">@somoshermanossv</a>
     </div>
   </div>
 </section>""")

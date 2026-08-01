@@ -92,11 +92,23 @@ Tone in Spanish is warm, direct, Salvadoran, second person singular with *voseo*
 "vení", "mandales"). Not neutral Latin American Spanish, and definitely not Spain Spanish.
 English is a natural translation, never literal. Dish names stay in Spanish in both languages.
 
+## Two rules from the 1 August review
+
+**Everything positive.** No negative framing anywhere in brand copy, headlines or
+section titles. "El nombre viene del trato", never "el nombre no vino del parentesco".
+Even the FAQ leads with the positive fact before stating the policy.
+
+**Orange is nearly gone.** The hero statement "¡Ya somos hermanos!" is cream, not orange.
+Orange now survives on primary CTA buttons only.
+
 ## Do not
 
 - Do not use an em-dash anywhere a person or a search engine can see it.
 - Do not strip Spanish accents, ñ, or the opening ¡ and ¿.
-- Do not translate dish names.
+- Do not translate dish names. On /en/ only, a short English gloss sits under the
+  Spanish name (`gloss` in menu_data.py). These are Mexican specialities, so the
+  gloss names the dish rather than translating it word for word.
+- Do not phrase anything in the negative. See the rule above.
 - Do not promise reservations or delivery. The company offers neither, on purpose.
 - Do not credit anything to Alfonso or "Pocho" by name. There are three brothers.
 - Do not invent addresses, phone numbers or basket prices. Those are still pending.
