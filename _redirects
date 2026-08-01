@@ -1,0 +1,5 @@
+# The Info page became Sucursales during the 31 July review.
+/info.html      /sucursales.html      301
+/en/info.html   /en/locations.html    301
+/info           /sucursales           301
+/en/info        /en/locations         301

@@ -721,3 +721,6 @@ p+p{margin-top:1em}
 .foto-marco img{border-radius:20px}
 /* the quote rule follows the brand green now that orange is reserved for CTAs */
 .quote::before{background:linear-gradient(var(--verde),var(--verde-claro))}
+
+/* content photography keeps the same rounded corners as the rest of the site */
+.section img:not([class]){border-radius:20px}

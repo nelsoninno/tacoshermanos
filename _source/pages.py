@@ -265,9 +265,6 @@ def historia(lang):
     <p class="lead mt-2 reveal">{L(lang,
       "La primera casa abrió el 21 de mayo de 2021 en San Benito, San Salvador. En cinco años se convirtieron en seis casas en todo el país.",
       "The first house opened on May 21, 2021 in San Benito, San Salvador. Within five years it became six houses across the country.")}</p>
-    <p class="mt-3 reveal">{pend(L(lang,
-      "PENDIENTE DEL CLIENTE: cómo fueron las primeras semanas, los retos del arranque, y qué NO ha cambiado desde el día uno.",
-      "PENDING FROM CLIENT: what the first weeks were like, the early challenges, and what has NOT changed since day one."), block=True)}</p>
     <div class="mt-4 reveal">{img(lang, f"assets/images/gallery/equipo-hermanos-tacos-hermanos-{DOMAIN}.webp",
       L(lang,"El equipo de Tacos Hermanos reunido bajo el rótulo","The Tacos Hermanos team gathered under the sign"))}</div>
   </div>
