@@ -692,9 +692,18 @@ p+p{margin-top:1em}
 .menu-blocks--pair .menu-block__img{aspect-ratio:3/4}
 
 .grid--valores{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.concepto--centro{align-items:center;text-align:center;gap:.25rem}
-.concepto--centro .concepto__shout{color:var(--crema);font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem)}
-.concepto--centro .concepto__line{font-size:clamp(1rem,.85rem + 1.1vw,1.6rem);color:color-mix(in srgb,var(--crema) 85%,transparent)}
+.concepto--centro{align-items:center;text-align:center;gap:0}
+.concepto--centro .concepto__shout{
+  color:var(--crema);font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem);
+  margin-top:clamp(.3rem,.2rem + .4vw,.65rem);
+}
+/* tight between a lead-in and its line, generous between the three pairs */
+.concepto--centro .concepto__line{
+  font-size:clamp(1rem,.85rem + 1.1vw,1.6rem);
+  color:var(--rojo);
+  margin-top:clamp(1.5rem,1rem + 1.8vw,2.8rem);
+}
+.concepto--centro .concepto__line:first-child{margin-top:0}
 
 /* ---------- the golden rule, closing the model section ---------------- */
 .regla{
