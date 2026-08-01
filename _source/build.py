@@ -334,9 +334,16 @@ def footer(lang, current):
     credit = "Sitio web hecho con amor, por" if es else "Website made with love, by"
     aria = ("Sitio web hecho con amor por everybodyknowsyou.com" if es
             else "Website made with love by everybodyknowsyou.com")
+    arriba = ("Tacos Hermanos, volver al inicio de la página" if es
+              else "Tacos Hermanos, back to the top of the page")
     return f"""</main>
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-brandbar">
+      <a class="footer-brand" href="#top" aria-label="{arriba}">
+        {cls(WORDMARK,"footer-brand__word")}
+      </a>
+    </div>
     <div class="footer-grid">
       <div class="footer-col">
         <h4>{'Navegación' if es else 'Navigation'}</h4>
