@@ -687,3 +687,20 @@ p+p{margin-top:1em}
 .concepto--centro{align-items:center;text-align:center;gap:.25rem}
 .concepto--centro .concepto__shout{color:var(--crema);font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem)}
 .concepto--centro .concepto__line{font-size:clamp(1rem,.85rem + 1.1vw,1.6rem);color:color-mix(in srgb,var(--crema) 85%,transparent)}
+
+/* ---------- the golden rule, closing the model section ---------------- */
+.regla{
+  margin-top:clamp(2.2rem,1.6rem + 2.4vw,3.6rem);
+  padding:clamp(2rem,1.4rem + 2.6vw,3.4rem) clamp(1.4rem,1rem + 2vw,3rem);
+  background:var(--verde-hondo);color:var(--crema);
+  border-radius:24px;text-align:center;
+}
+.regla .eyebrow{color:var(--durazno);margin-bottom:.9rem}
+.regla__texto{
+  font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.35rem,1.05rem + 1.7vw,2.5rem);line-height:1.22;
+  max-width:24ch;margin-inline:auto;color:var(--crema);
+}
+.foto-marco img{border-radius:20px}
+/* the quote rule follows the brand green now that orange is reserved for CTAs */
+.quote::before{background:linear-gradient(var(--verde),var(--verde-claro))}

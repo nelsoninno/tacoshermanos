@@ -48,13 +48,7 @@ def home(lang):
         "They are small things that shift tiny angles, and over the long run those tiny angles have enormous effects. We serve thousands of people every day. Doing it with kindness, with gentleness and with care, alongside the best food we can put on a plate, is our way of making the world a better place.")}</p>
     </div>
     <div class="reveal" data-delay="1">
-      <blockquote class="quote">
-        <p>{L(lang,
-          "Tenemos literalmente una regla de oro en Tacos Hermanos: que cada persona que entra por nuestras puertas viva una experiencia extraordinaria, una experiencia que cambia vidas.",
-          "We literally have a golden rule at Tacos Hermanos: every single person who walks through our doors lives an extraordinary experience, an experience that changes lives.")}</p>
-        <cite>Tacos Hermanos</cite>
-      </blockquote>
-      <div class="mt-3">{img(lang, f"assets/images/gallery/servicio-memorable-tacos-hermanos-{DOMAIN}.webp",
+      <div class="foto-marco">{img(lang, f"assets/images/gallery/servicio-memorable-tacos-hermanos-{DOMAIN}.webp",
         L(lang,"Un colaborador de Tacos Hermanos sirviendo un plato","A Tacos Hermanos team member serving a plate"), cls_="")}</div>
     </div>
   </div>
@@ -81,6 +75,13 @@ def home(lang):
       <h2>{L(lang,"Lo que siempre vas a encontrar aquí","What you will always find here")}</h2>
     </div>
     <div class="pillars">{cards}</div>
+
+    <div class="regla reveal">
+      <span class="eyebrow">{L(lang,"La regla de oro en Tacos Hermanos","The golden rule at Tacos Hermanos")}</span>
+      <p class="regla__texto">{L(lang,
+        "Que cada persona que entra por nuestras puertas viva una experiencia extraordinaria, una experiencia que cambia vidas.",
+        "That every person who walks through our doors lives an extraordinary experience, an experience that changes lives.")}</p>
+    </div>
   </div>
 </section>""")
 

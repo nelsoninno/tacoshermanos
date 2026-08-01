@@ -99,6 +99,10 @@ pending Pocho; an Instagram video feed page was discussed but not built.
 - The animated map in the home teaser is 40% wider.
 - Somos Hermanos links to somoshermanos.ong and @somoshermanossv, and is declared as an
   NGO funder in the schema graph.
+- The golden rule moved out of "La esencia" and now closes the "Lo que siempre vas a
+  encontrar aquí" section, as a green band under the three pillars, titled "La regla de oro
+  en Tacos Hermanos". Without a personal byline the quote had nothing to anchor it where it
+  was. "La esencia" keeps the essay and the photo.
 
 ## Videos
 
