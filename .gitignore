@@ -2,3 +2,4 @@
 _source/photos-original/
 .DS_Store
 Thumbs.db
+_source/__pycache__/

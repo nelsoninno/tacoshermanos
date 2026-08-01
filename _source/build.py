@@ -119,6 +119,14 @@ def pend(text, block=False):
     """Mark copy that still needs the client's own words or sign-off."""
     return f'<span class="pendiente{" pendiente--block" if block else ""}">{text}</span>'
 
+import unicodedata
+def casa_id(nombre):
+    """Stable anchor for a branch, e.g. 'La Gran Vía' -> 'la-gran-via'."""
+    txt = unicodedata.normalize("NFKD", nombre).encode("ascii", "ignore").decode()
+    out = "".join(ch.lower() if ch.isalnum() else "-" for ch in txt)
+    while "--" in out: out = out.replace("--", "-")
+    return out.strip("-")
+
 def rel(lang, p):  return p if lang == "es" else "../" + p
 def href(lang, k):
     es_f, en_f = PAGES[k]
@@ -576,7 +584,7 @@ def sucursal_cards(lang):
                        cls_="video-card__poster")
                  + f'<figcaption class="video-card__label">{nombre}</figcaption></figure>')
         desde = ("Desde el " + f_es) if lang == "es" else ("Since " + f_en)
-        out.append(f"""<article class="sucursal reveal">
+        out.append(f"""<article class="sucursal reveal" id="{casa_id(nombre)}">
         {media}
         <div class="sucursal__body">
           <h3>{nombre}</h3>

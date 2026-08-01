@@ -724,3 +724,25 @@ p+p{margin-top:1em}
 
 /* content photography keeps the same rounded corners as the rest of the site */
 .section img:not([class]){border-radius:20px}
+
+/* each row on the home timeline opens that branch on the Sucursales page */
+a.timeline__row{text-decoration:none;color:inherit;cursor:pointer}
+a.timeline__row .timeline__name{transition:color .2s ease}
+a.timeline__row:hover .timeline__name,
+a.timeline__row:focus-visible .timeline__name{color:var(--verde)}
+a.timeline__row .timeline__n{transition:transform .2s ease}
+a.timeline__row:hover .timeline__n{transform:translateX(-4px)}
+a.timeline__row::after{
+  content:"\2192";font-family:var(--font-display);font-weight:800;
+  color:var(--verde);opacity:0;transform:translateX(-6px);
+  transition:opacity .2s ease,transform .2s ease;margin-left:.2rem;
+}
+a.timeline__row:hover::after,a.timeline__row:focus-visible::after{opacity:1;transform:none}
+/* the sticky header must not cover the card we jump to */
+.sucursal{scroll-margin-top:110px}
+.sucursal:target h3{color:var(--verde)}
+/* the name sits under a tall portrait video, so ring the media instead:
+   it is what a visitor actually sees on arrival from the home page */
+.sucursal:target .video-card{box-shadow:0 0 0 3px var(--verde)}
+/* a deep-linked card must never be left mid-animation, JS or no JS */
+.reveal:target{opacity:1;transform:none}

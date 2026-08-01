@@ -68,3 +68,25 @@
     });
   });
 })();
+
+/* ---- deep links: land on the right card, fully visible ---------------- */
+(function () {
+  'use strict';
+  function jumpToHash() {
+    if (!location.hash) return;
+    var el;
+    try { el = document.querySelector(location.hash); } catch (e) { return; }
+    if (!el) return;
+    // Arriving at a specific card means the scroll-reveal above it is irrelevant,
+    // and leaving it unresolved both hides the target and shifts the layout.
+    document.querySelectorAll('.reveal').forEach(function (n) { n.classList.add('in'); });
+    // Instant, never smooth: a smooth scroll from another page animates for a
+    // second or more, so anyone who touches the wheel on arrival fights it.
+    try { el.scrollIntoView({ block: 'start', behavior: 'instant' }); }
+    catch (e) { el.scrollIntoView(true); }
+  }
+  // run after images and fonts have settled, so the position is final
+  if (document.readyState === 'complete') setTimeout(jumpToHash, 50);
+  else window.addEventListener('load', function () { setTimeout(jumpToHash, 50); });
+  window.addEventListener('hashchange', jumpToHash);
+})();

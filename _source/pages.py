@@ -109,10 +109,13 @@ def home(lang):
 </section>""")
 
     # --- casas
+    ver = L(lang, "Ver horarios y video de", "See hours and video for")
     rows = "".join(
-      f'<div class="timeline__row reveal"><span class="timeline__name">{c[0]}</span>'
+      f'<a class="timeline__row reveal" href="{href(lang,"info")}#{casa_id(c[0])}" '
+      f'aria-label="{ver} {c[0]}">'
+      f'<span class="timeline__name">{c[0]}</span>'
       f'<span class="timeline__date">{L(lang,c[1],c[2])}</span>'
-      f'<span class="timeline__n">0{i+1}</span></div>' for i,c in enumerate(CASAS))
+      f'<span class="timeline__n">0{i+1}</span></a>' for i,c in enumerate(CASAS))
     out.append(f"""<section class="section" aria-labelledby="casas">
   <div class="wrap">
     <div class="reveal mb-3">
